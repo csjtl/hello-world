@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Img/favicon-16x16.png">
+  <link rel="mask-icon" href="/Img/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/Img/site.webmanifest">
+  <meta name="google-site-verification" content="fvwjkFuau0tORJ5I7dA2uBmezPpxGd9nadluTdygs-w">
+  <meta name="yandex-verification" content="90b58abcb217f0c8">
+  <meta name="baidu-site-verification" content="code-bVjVqeMI5c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell 790作为二级路由接主路由lan口(使用pi4的网络环境)。文章内容为openwrt的配置参数。软路由准备从pi4换成x86版本的。但是网卡等还没有到齐，先使用单臂路由模式凑合用着。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单臂路由 OpenWRT 配置参数">
+<meta property="og:url" content="https://tl8517.com/router-on-a-stick-configuration/">
+<meta property="og:site_name" content="Focus">
+<meta property="og:description" content="设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell 790作为二级路由接主路由lan口(使用pi4的网络环境)。文章内容为openwrt的配置参数。软路由准备从pi4换成x86版本的。但是网卡等还没有到齐，先使用单臂路由模式凑合用着。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/01.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/02.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/03.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/04.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/05.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/06.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/07.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/08.png">
+<meta property="og:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/09.png">
+<meta property="article:published_time" content="2020-04-21T12:43:09.000Z">
+<meta property="article:modified_time" content="2021-10-24T08:39:07.048Z">
+<meta property="article:author" content="csjtl">
+<meta property="article:tag" content="openWRT">
+<meta property="article:tag" content="configuration">
+<meta property="article:tag" content="router on a stick">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tl8517.com/assets/Router-On-a-Stick-Configuration/01.png">
+
+
+<link rel="canonical" href="https://tl8517.com/router-on-a-stick-configuration/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tl8517.com/router-on-a-stick-configuration/","path":"router-on-a-stick-configuration/","title":"单臂路由 OpenWRT 配置参数"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>单臂路由 OpenWRT 配置参数 | Focus</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MRCBCJ8ZQ"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-0MRCBCJ8ZQ","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+<script data-ad-client="ca-pub-7562598542957769" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Focus</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">兴趣使燃</p>
+      <img class="custom-logo-image" src="/Img/Site-Avatar.png" alt="Focus">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BF%9E%E6%8E%A5%E5%A6%82%E5%9B%BE%EF%BC%8C%E5%85%89%E7%BA%A4%E7%BB%8F%E8%BF%87%E5%85%89%E7%8C%AB%E6%9D%A5%E5%88%B0%E4%B8%BB%E8%B7%AF%E7%94%B1%EF%BC%8C%E9%80%9A%E8%BF%87%E4%B8%BB%E8%B7%AF%E7%94%B1wan%E5%8F%A3%E6%8B%A8%E5%8F%B7%EF%BC%8Cpi4%E6%8E%A5%E4%B8%BB%E8%B7%AF%E7%94%B1lan%E5%8F%A3%EF%BC%8C%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91%E3%80%82dell-790%E4%BD%9C%E4%B8%BA%E4%BA%8C%E7%BA%A7%E8%B7%AF%E7%94%B1%E6%8E%A5%E4%B8%BB%E8%B7%AF%E7%94%B1lan%E5%8F%A3-%E4%BD%BF%E7%94%A8pi4%E7%9A%84%E7%BD%91%E7%BB%9C%E7%8E%AF%E5%A2%83-%E3%80%82%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E4%B8%BAopenwrt%E7%9A%84%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell 790作为二级路由接主路由lan口(使用pi4的网络环境)。文章内容为openwrt的配置参数。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E8%B7%AF%E7%94%B1%E6%8B%A8%E5%8F%B7%E5%86%85%E7%BD%91IP%E4%B8%BA%E9%BB%98%E8%AE%A4%E7%9A%84%EF%BC%9A"><span class="nav-number">1.0.1.</span> <span class="nav-text">主路由拨号内网IP为默认的：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pi4%E5%8F%AA%E6%9C%89%E5%8D%95%E7%BD%91%E5%8F%A3%EF%BC%8C%E4%BD%86%E6%98%AFwan%E5%8F%A3%E5%92%8Clan%E5%8F%A3%E9%83%BD%E9%9C%80%E9%85%8D%E7%BD%AE%EF%BC%9A"><span class="nav-number">1.0.2.</span> <span class="nav-text">pi4只有单网口，但是wan口和lan口都需配置：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lan%E5%8F%A3%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%EF%BC%9A%E8%BF%99%E9%87%8Clan%E5%8F%A3%E5%90%8D%E8%AE%BE%E7%BD%AE%E4%B8%BAlan1%EF%BC%8C%E5%9B%A0%E4%B8%BAlan%E9%93%BE%E6%8E%A5%E5%88%B0pi4%E7%9A%84%E6%97%A0%E7%BA%BF%E6%8E%A5%E5%8F%A3%E3%80%82%E5%8F%82%E6%95%B0%E5%92%8Cwan%E5%8F%A3%E6%96%B9%E6%B3%95%E4%B8%80%E6%A0%B7%EF%BC%8CIP%E4%B8%8D%E8%83%BD%E9%87%8D%E5%A4%8D%E3%80%82%E5%85%B3%E9%97%ADdhcp%EF%BC%8C%E5%8F%96%E6%B6%88%E6%A1%A5%E6%8E%A5%E5%B9%B6%E9%93%BE%E6%8E%A5eth0"><span class="nav-number">1.1.</span> <span class="nav-text">lan口配置参数：这里lan口名设置为lan1，因为lan链接到pi4的无线接口。参数和wan口方法一样，IP不能重复。关闭dhcp，取消桥接并链接eth0.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%8C%E6%88%90%E5%90%8E%E5%9C%A8%E7%8A%B6%E6%80%81-gt-%E6%A6%82%E5%86%B5%E7%9A%84%E7%BD%91%E7%BB%9C%E9%83%A8%E5%88%86%EF%BC%8C%E8%AF%86%E5%88%AB%E7%9A%84IPv4-wan%E7%8A%B6%E6%80%81%E4%B8%BA%E8%AE%BE%E5%AE%9A%E7%9A%84lan%E5%8F%A3%E7%9A%84ip%E4%BF%A1%E6%81%AF%E3%80%82"><span class="nav-number">1.2.</span> <span class="nav-text">完成后在状态-&gt;概况的网络部分，识别的IPv4 wan状态为设定的lan口的ip信息。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#dell-790%E9%85%8D%E7%BD%AE%E5%8F%82%E6%95%B0%EF%BC%9A"><span class="nav-number">1.2.1.</span> <span class="nav-text">dell 790配置参数：</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%8C%E7%BB%93%EF%BC%8C%E6%92%92%E8%8A%B1"><span class="nav-number"></span> <span class="nav-text">完结，撒花</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="csjtl"
+      src="/Img/Sidebar-Avatar.gif">
+  <p class="site-author-name" itemprop="name">csjtl</p>
+  <div class="site-description" itemprop="description">她无处不在</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">117</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/csjtl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;csjtl" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tl8517@gmail.com" title="E-Mail → mailto:tl8517@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/tl8517" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;tl8517" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/tl8517" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;tl8517" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/router-on-a-stick-configuration/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="单臂路由 OpenWRT 配置参数 | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          单臂路由 OpenWRT 配置参数
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-21 20:43:09" itemprop="dateCreated datePublished" datetime="2020-04-21T20:43:09+08:00">2020-04-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-10-24 16:39:07" itemprop="dateModified" datetime="2021-10-24T16:39:07+08:00">2021-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/embedded-system/" itemprop="url" rel="index"><span itemprop="name">embedded system</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/embedded-system/openwrt/" itemprop="url" rel="index"><span itemprop="name">openwrt</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell-790作为二级路由接主路由lan口-使用pi4的网络环境-。文章内容为openwrt的配置参数。"><a href="#设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell-790作为二级路由接主路由lan口-使用pi4的网络环境-。文章内容为openwrt的配置参数。" class="headerlink" title="设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell 790作为二级路由接主路由lan口(使用pi4的网络环境)。文章内容为openwrt的配置参数。"></a>设备之间的连接如图，光纤经过光猫来到主路由，通过主路由wan口拨号，pi4接主路由lan口，科学上网。dell 790作为二级路由接主路由lan口(使用pi4的网络环境)。文章内容为openwrt的配置参数。</h2><p>软路由准备从pi4换成x86版本的。但是网卡等还没有到齐，先使用单臂路由模式凑合用着。<span id="more"></span></p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/01.png" alt="连接如图"></p>
+<h4 id="主路由拨号内网IP为默认的："><a href="#主路由拨号内网IP为默认的：" class="headerlink" title="主路由拨号内网IP为默认的："></a>主路由拨号内网IP为默认的：</h4><p>IP：192.168.50.1</p>
+<p>子网掩码：255.255.255.0</p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/02.png" alt="主路由"></p>
+<h4 id="pi4只有单网口，但是wan口和lan口都需配置："><a href="#pi4只有单网口，但是wan口和lan口都需配置：" class="headerlink" title="pi4只有单网口，但是wan口和lan口都需配置："></a>pi4只有单网口，但是wan口和lan口都需配置：</h4><p><strong>wan口配置参数</strong>：需要静态ip协议，任意不重复的IP一个，子网掩码，网关和自定义dns为主路由IP，关闭dhcp服务，取消桥接链接eth0（网口）。</p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/03.png" alt="pi4"></p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/04.png" alt="单臂路由 OpenWRT 配置 参数"></p>
+<h3 id="lan口配置参数：这里lan口名设置为lan1，因为lan链接到pi4的无线接口。参数和wan口方法一样，IP不能重复。关闭dhcp，取消桥接并链接eth0"><a href="#lan口配置参数：这里lan口名设置为lan1，因为lan链接到pi4的无线接口。参数和wan口方法一样，IP不能重复。关闭dhcp，取消桥接并链接eth0" class="headerlink" title="lan口配置参数：这里lan口名设置为lan1，因为lan链接到pi4的无线接口。参数和wan口方法一样，IP不能重复。关闭dhcp，取消桥接并链接eth0."></a><strong>lan口配置参数</strong>：这里lan口名设置为lan1，因为lan链接到pi4的无线接口。参数和wan口方法一样，IP不能重复。关闭dhcp，取消桥接并链接eth0.</h3><p><img src="/../assets/Router-On-a-Stick-Configuration/05.png" alt="单臂路由 OpenWRT 配置 参数"></p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/06.png" alt="单臂路由 OpenWRT 配置 参数"></p>
+<h3 id="完成后在状态-gt-概况的网络部分，识别的IPv4-wan状态为设定的lan口的ip信息。"><a href="#完成后在状态-gt-概况的网络部分，识别的IPv4-wan状态为设定的lan口的ip信息。" class="headerlink" title="完成后在状态-&gt;概况的网络部分，识别的IPv4 wan状态为设定的lan口的ip信息。"></a>完成后在状态-&gt;概况的网络部分，识别的IPv4 wan状态为设定的lan口的ip信息。</h3><p><img src="/../assets/Router-On-a-Stick-Configuration/07.png" alt="单臂路由 OpenWRT 配置 参数"></p>
+<h4 id="dell-790配置参数："><a href="#dell-790配置参数：" class="headerlink" title="dell 790配置参数："></a>dell 790配置参数：</h4><p><strong>wan口配置参数：</strong>主路由的lan口和无线信号为正常上网，二级路由要访问单臂路由（pi4）的网络环境，需要将pi4作为服务器来访问。参数如下：静态协议，任意不重复IP地址，子网掩码，网关地址和dns是单臂路由（pi4）的IP地址，打开或关闭dhcp服务没有区别，取消桥接并链接eth0。</p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/08.png" alt="单臂路由 OpenWRT 配置 参数"></p>
+<p>取消桥接并链接eth0</p>
+<p><img src="/../assets/Router-On-a-Stick-Configuration/09.png" alt="单臂路由 OpenWRT 配置 参数"></p>
+<p><strong>lan口配置参数：</strong></p>
+<p>不再描述。</p>
+<p>openwrt更多相关内容：</p>
+<p><a href="https://tl8517.com/category/system/openwrt/">https://tl8517.com/category/system/openwrt/</a></p>
+<p>lede源码：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/coolsnowwolf/lede">https://github.com/coolsnowwolf/lede</a></p>
+<h1 id="完结，撒花"><a href="#完结，撒花" class="headerlink" title="完结，撒花"></a>完结，撒花</h1>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>csjtl
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tl8517.com/router-on-a-stick-configuration/" title="单臂路由 OpenWRT 配置参数">https://tl8517.com/router-on-a-stick-configuration/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/openWRT/" rel="tag"># openWRT</a>
+              <a href="/tags/configuration/" rel="tag"># configuration</a>
+              <a href="/tags/router-on-a-stick/" rel="tag"># router on a stick</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/openwrt-configuration-parameter/" rel="prev" title="OpenWRT raspberrypi4 配置参数(环境:Ubuntu20.04)">
+                  <i class="fa fa-chevron-left"></i> OpenWRT raspberrypi4 配置参数(环境:Ubuntu20.04)
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/openwrt-x86-ssrplus/" rel="next" title="OpenWrt x86 添加 ssr-plus">
+                  OpenWrt x86 添加 ssr-plus <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-heart-broken"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">csjtl</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>

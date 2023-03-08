@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Img/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Img/favicon-16x16.png">
+  <link rel="mask-icon" href="/Img/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/Img/site.webmanifest">
+  <meta name="google-site-verification" content="fvwjkFuau0tORJ5I7dA2uBmezPpxGd9nadluTdygs-w">
+  <meta name="yandex-verification" content="90b58abcb217f0c8">
+  <meta name="baidu-site-verification" content="code-bVjVqeMI5c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="蜂鸣器模块原理图 Active vs. Passive Buzzer 有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。 面包板接线图:有源蜂鸣器和无源蜂鸣器一样.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="active passive buzzer 有&#x2F;无源蜂鸣器 树莓派3">
+<meta property="og:url" content="https://tl8517.com/rpi-active-passive-buzzer/">
+<meta property="og:site_name" content="Focus">
+<meta property="og:description" content="蜂鸣器模块原理图 Active vs. Passive Buzzer 有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。 面包板接线图:有源蜂鸣器和无源蜂鸣器一样.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tl8517.com/assets/RPi-Active-Passive-Buzzer/1.jpg">
+<meta property="og:image" content="https://tl8517.com/assets/RPi-Active-Passive-Buzzer/2.jpg">
+<meta property="article:published_time" content="2020-04-03T13:58:07.000Z">
+<meta property="article:modified_time" content="2021-10-24T08:39:19.514Z">
+<meta property="article:author" content="csjtl">
+<meta property="article:tag" content="active buzzer">
+<meta property="article:tag" content="passive buzzer">
+<meta property="article:tag" content="RASPBERRYPI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tl8517.com/assets/RPi-Active-Passive-Buzzer/1.jpg">
+
+
+<link rel="canonical" href="https://tl8517.com/rpi-active-passive-buzzer/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tl8517.com/rpi-active-passive-buzzer/","path":"rpi-active-passive-buzzer/","title":"active passive buzzer 有/无源蜂鸣器 树莓派3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>active passive buzzer 有/无源蜂鸣器 树莓派3 | Focus</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MRCBCJ8ZQ"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-0MRCBCJ8ZQ","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+<script data-ad-client="ca-pub-7562598542957769" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Focus</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">兴趣使燃</p>
+      <img class="custom-logo-image" src="/Img/Site-Avatar.png" alt="Focus">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Active-vs-Passive-Buzzer-%E6%9C%89%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8%E5%86%85%E7%BD%AE%E6%8C%AF%E8%8D%A1%E5%99%A8%EF%BC%8C%E9%80%9A%E7%94%B5%E5%B0%B1%E4%BC%9A%E5%8F%91%E5%87%BA%E5%A3%B0%E9%9F%B3%E3%80%82%E6%97%A0%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8%E7%9B%B8%E5%8F%8D%EF%BC%8C%E7%9B%B4%E6%B5%81%E7%94%B5%E5%B9%B6%E4%B8%8D%E8%83%BD%E8%AE%A9%E5%AE%83%E5%8F%91%E5%A3%B0%E3%80%82%E6%97%A0%E6%BA%90%E8%9C%82%E9%B8%A3%E5%99%A8%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BD%BF%E7%94%A8%E9%A2%91%E7%8E%87%E5%9C%A82k%E5%88%B05k%E4%B9%8B%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%A2%E6%9D%A5%E9%A9%B1%E5%8A%A8%E3%80%82%E6%96%87%E7%AB%A0%E5%86%85%E5%AE%B9%E6%9C%89%E6%A8%A1%E5%9D%97%E5%8E%9F%E7%90%86%E5%9B%BE%EF%BC%8C%E6%A0%91%E8%8E%93%E6%B4%BE3%E6%8E%A5%E7%BA%BF%E5%9B%BE%EF%BC%8C%E7%9B%B8%E5%85%B3%E4%BB%A3%E7%A0%81%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">Active vs. Passive Buzzer 有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="csjtl"
+      src="/Img/Sidebar-Avatar.gif">
+  <p class="site-author-name" itemprop="name">csjtl</p>
+  <div class="site-description" itemprop="description">她无处不在</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">72</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">117</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/csjtl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;csjtl" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tl8517@gmail.com" title="E-Mail → mailto:tl8517@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/tl8517" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;tl8517" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/tl8517" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;tl8517" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdn.jsdelivr.net/npm/@creativecommons/vocabulary@2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/rpi-active-passive-buzzer/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="active passive buzzer 有/无源蜂鸣器 树莓派3 | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          active passive buzzer 有/无源蜂鸣器 树莓派3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-04-03 21:58:07" itemprop="dateCreated datePublished" datetime="2020-04-03T21:58:07+08:00">2020-04-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2021-10-24 16:39:19" itemprop="dateModified" datetime="2021-10-24T16:39:19+08:00">2021-10-24</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/embedded-system/" itemprop="url" rel="index"><span itemprop="name">embedded system</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/embedded-system/raspberry-pi/" itemprop="url" rel="index"><span itemprop="name">raspberry pi</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>蜂鸣器模块原理图</p>
+<h3 id="Active-vs-Passive-Buzzer-有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。"><a href="#Active-vs-Passive-Buzzer-有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。" class="headerlink" title="Active vs. Passive Buzzer 有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。"></a>Active vs. Passive Buzzer 有源蜂鸣器内置振荡器，通电就会发出声音。无源蜂鸣器相反，直流电并不能让它发声。无源蜂鸣器，需要使用频率在2k到5k之间的方波来驱动。文章内容有模块原理图，树莓派3接线图，相关代码。</h3><p><img src="/../assets/RPi-Active-Passive-Buzzer/1.jpg"></p>
+<p>面包板接线图:有源蜂鸣器和无源蜂鸣器一样.<span id="more"></span></p>
+<p><img src="/../assets/RPi-Active-Passive-Buzzer/2.jpg" alt="active passive buzzer"></p>
+<p>有源蜂鸣器SIG接地三极管1和3脚导通,蜂鸣器发出蜂鸣声,声音单一.</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;wiringPi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BuzzerPin      0</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">(<span class="type">void</span>)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">wiringPiSetup</span>() == <span class="number">-1</span>)&#123; </span><br><span class="line"><span class="built_in">printf</span>(<span class="string">&quot;setup wiringPi failed !&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">pinMode</span>(BuzzerPin,  <span class="literal">OUTPUT</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line"><span class="built_in">digitalWrite</span>(BuzzerPin, <span class="literal">HIGH</span>);</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line"><span class="built_in">digitalWrite</span>(BuzzerPin, <span class="literal">LOW</span>);</span><br><span class="line"><span class="built_in">delay</span>(<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>无源蜂鸣器的SIG脚,根据树莓派3产生的方波,发出蜂鸣声,可发出不同声音.</p>
+<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;wiringPi.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;softTone.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> BuzPin    0</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL1  131                                         <span class="comment">//低音</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL2  147</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL3  165</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL4  175</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL5  196</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL6  221</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CL7  248</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM1  262                                         <span class="comment">//中音</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM2  294</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM3  330</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM4  350</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM5  393</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM6  441</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CM7  495</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH1  525                                         <span class="comment">//高音</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH2  589</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH3  661</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH4  700</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH5  786</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH6  882</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span>  CH7  990</span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> song_1[] = &#123;<span class="built_in">CM3</span>,<span class="built_in">CM5</span>,<span class="built_in">CM6</span>,<span class="built_in">CM3</span>,<span class="built_in">CM2</span>,<span class="built_in">CM3</span>,<span class="built_in">CM5</span>,<span class="built_in">CM6</span>,CH1,<span class="built_in">CM6</span>,<span class="built_in">CM5</span>,<span class="built_in">CM1</span>,<span class="built_in">CM3</span>,<span class="built_in">CM2</span>,                </span><br><span class="line"><span class="built_in">CM2</span>,<span class="built_in">CM3</span>,<span class="built_in">CM5</span>,<span class="built_in">CM2</span>,<span class="built_in">CM3</span>,<span class="built_in">CM3</span>,<span class="built_in">CL6</span>,<span class="built_in">CL6</span>,<span class="built_in">CL6</span>,<span class="built_in">CM1</span>,<span class="built_in">CM2</span>,<span class="built_in">CM3</span>,<span class="built_in">CM2</span>,<span class="built_in">CL7</span>,</span><br><span class="line"><span class="built_in">CL6</span>,<span class="built_in">CM1</span>,<span class="built_in">CL5</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> beat_1[] = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,</span><br><span class="line"><span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> song_2[] = &#123;<span class="built_in">CM1</span>,<span class="built_in">CM1</span>,<span class="built_in">CM1</span>,<span class="built_in">CL5</span>,<span class="built_in">CM3</span>,<span class="built_in">CM3</span>,<span class="built_in">CM3</span>,<span class="built_in">CM1</span>,<span class="built_in">CM1</span>,<span class="built_in">CM3</span>,<span class="built_in">CM5</span>,<span class="built_in">CM5</span>,<span class="built_in">CM4</span>,<span class="built_in">CM3</span>,<span class="built_in">CM2</span>,</span><br><span class="line"><span class="built_in">CM2</span>,<span class="built_in">CM3</span>,<span class="built_in">CM4</span>,<span class="built_in">CM4</span>,<span class="built_in">CM3</span>,<span class="built_in">CM2</span>,<span class="built_in">CM3</span>,<span class="built_in">CM1</span>,<span class="built_in">CM1</span>,<span class="built_in">CM3</span>,<span class="built_in">CM2</span>,<span class="built_in">CL5</span>,<span class="built_in">CL7</span>,<span class="built_in">CM2</span>,<span class="built_in">CM1</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> beat_2[] = &#123;<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>&#125;;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> main(<span class="type">void</span>)</span><br><span class="line">&#123;</span><br><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(wiringPiSetup() == <span class="number">-1</span>)&#123; <span class="comment">//when initialize wiring failed,print messageto screen</span></span><br><span class="line">printf(<span class="string">&quot;setup wiringPi failed !&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(softToneCreate(BuzPin) == <span class="number">-1</span>)&#123;</span><br><span class="line">printf(<span class="string">&quot;setup softTone failed !&quot;</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="number">1</span>; </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">printf(<span class="string">&quot;music is being played...\n&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="keyword">sizeof</span>(song_1)/<span class="number">4</span>;i++)&#123;</span><br><span class="line">printf(<span class="string">&quot;1\n&quot;</span>);</span><br><span class="line">softToneWrite(BuzPin, song_1[i]);</span><br><span class="line">printf(<span class="string">&quot;2\n&quot;</span>);</span><br><span class="line">delay(beat_1[i] * <span class="number">500</span>);</span><br><span class="line">printf(<span class="string">&quot;3\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(i=<span class="number">0</span>;i&lt;<span class="keyword">sizeof</span>(song_2)/<span class="number">4</span>;i++)&#123;</span><br><span class="line">printf(<span class="string">&quot;a\n&quot;</span>);</span><br><span class="line">softToneWrite(BuzPin, song_2[i]);</span><br><span class="line">printf(<span class="string">&quot;b\n&quot;</span>);</span><br><span class="line">delay(beat_2[i] * <span class="number">500</span>);</span><br><span class="line">printf(<span class="string">&quot;c\n&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>树莓派3更多模块请点击链接</p>
+<p><a href="https://tl8517.com/category/code/raspberrypi/">从入门到放弃的学习RASPBERRYPI</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>csjtl
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tl8517.com/rpi-active-passive-buzzer/" title="active passive buzzer 有&#x2F;无源蜂鸣器 树莓派3">https://tl8517.com/rpi-active-passive-buzzer/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/active-buzzer/" rel="tag"># active buzzer</a>
+              <a href="/tags/passive-buzzer/" rel="tag"># passive buzzer</a>
+              <a href="/tags/RASPBERRYPI/" rel="tag"># RASPBERRYPI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/seo-keyphrase/" rel="prev" title="SEO keyphrase （搜索引擎优化）关键词分析（网站建设）">
+                  <i class="fa fa-chevron-left"></i> SEO keyphrase （搜索引擎优化）关键词分析（网站建设）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/rpi-reed-switch/" rel="next" title="reed switch 干簧管模块（簧片开关） 树莓派3">
+                  reed switch 干簧管模块（簧片开关） 树莓派3 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fas fa-heart-broken"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">csjtl</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
