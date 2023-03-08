@@ -1,14 +1,19 @@
-# hexo robots.txt
-User-agent: *
-Allow: /
-Allow: /archives/
-Allow: /categories/
-Allow: /tags/
-Allow: /about/
+User-Agent: Baiduspider
+Disallow: /tags/
+Disallow: /tag/
+Disallow: /tl8517/
+Disallow: /keywords/
+Disallow: /search/
+Disallow: /comment/
+Disallow: /*?*
+Disallow: /?*
+Disallow: /mynote
 
-Disallow: /js/
-Disallow: /css/
-Disallow: /mynote/
-
-Sitemap: http://tl8517.com/sitemap.xml
-Sitemap: https://tl8517.com/sitemap.xml
+User-Agent: *
+Disallow: /tl8517/
+Disallow: /keywords/
+Disallow: /search/
+Disallow: /comment/
+Disallow: /*?*
+Disallow: /?*
+Disallow: /mynote
