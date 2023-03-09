@@ -20,8 +20,9 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="不知你的电脑Internet访问的名称后面的数字增加到数字几了？这是电脑插入不同终端的网线引起的。而且电脑平时使用过程中会添加一些额外的网卡，网卡设备移除后，系统安装的驱动程序并没有随着移除而卸载。这个问题困扰我相当久了，在文章内描述了我的解决方法（不使用第三方的驱动管理软件）。Internet名称的数字：我倒腾路由（软硬都有），导致名称后的数字涨到了8 ，看着难受。这个网上有两种可行的方案，修改">
 <meta property="og:type" content="article">
@@ -30,19 +31,19 @@
 <meta property="og:site_name" content="Focus">
 <meta property="og:description" content="不知你的电脑Internet访问的名称后面的数字增加到数字几了？这是电脑插入不同终端的网线引起的。而且电脑平时使用过程中会添加一些额外的网卡，网卡设备移除后，系统安装的驱动程序并没有随着移除而卸载。这个问题困扰我相当久了，在文章内描述了我的解决方法（不使用第三方的驱动管理软件）。Internet名称的数字：我倒腾路由（软硬都有），导致名称后的数字涨到了8 ，看着难受。这个网上有两种可行的方案，修改">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/1.jpg">
-<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/2.jpg">
-<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/3.jpg">
-<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/4.jpg">
-<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/5.jpg">
+<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/1.webp">
+<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/2.webp">
+<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/3.webp">
+<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/4.webp">
+<meta property="og:image" content="https://tl8517.com/assets/Win10-DeviceManagement/5.webp">
 <meta property="article:published_time" content="2020-05-20T06:35:21.000Z">
-<meta property="article:modified_time" content="2021-10-24T08:42:52.635Z">
+<meta property="article:modified_time" content="2023-03-09T13:19:56.833Z">
 <meta property="article:author" content="csjtl">
 <meta property="article:tag" content="delete device drive">
 <meta property="article:tag" content="device management">
 <meta property="article:tag" content="Drive management">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tl8517.com/assets/Win10-DeviceManagement/1.jpg">
+<meta name="twitter:image" content="https://tl8517.com/assets/Win10-DeviceManagement/1.webp">
 
 
 <link rel="canonical" href="https://tl8517.com/win10-devicemanagement/">
@@ -73,7 +74,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
 
   <main class="main">
@@ -94,7 +95,7 @@
       <p class="site-title">Focus</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">兴趣使燃</p>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
       <img class="custom-logo-image" src="/Img/Site-Avatar.png" alt="Focus">
   </div>
 
@@ -108,7 +109,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -180,7 +181,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -213,18 +214,6 @@
     </div>
 
     
-    <div class="sidebar-inner sidebar-blogroll">
-      <div class="links-of-blogroll animated">
-        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          链接
-        </div>
-        <ul class="links-of-blogroll-list">
-            <li class="links-of-blogroll-item">
-              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
-            </li>
-        </ul>
-      </div>
-    </div>
   </aside>
 
 
@@ -277,7 +266,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-10-24 16:42:52" itemprop="dateModified" datetime="2021-10-24T16:42:52+08:00">2021-10-24</time>
+      <time title="修改时间：2023-03-09 21:19:56" itemprop="dateModified" datetime="2023-03-09T21:19:56+08:00">2023-03-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -305,19 +294,19 @@
     <div class="post-body" itemprop="articleBody">
         <h3 id="不知你的电脑Internet访问的名称后面的数字增加到数字几了？这是电脑插入不同终端的网线引起的。而且电脑平时使用过程中会添加一些额外的网卡，网卡设备移除后，系统安装的驱动程序并没有随着移除而卸载。这个问题困扰我相当久了，在文章内描述了我的解决方法（不使用第三方的驱动管理软件）。"><a href="#不知你的电脑Internet访问的名称后面的数字增加到数字几了？这是电脑插入不同终端的网线引起的。而且电脑平时使用过程中会添加一些额外的网卡，网卡设备移除后，系统安装的驱动程序并没有随着移除而卸载。这个问题困扰我相当久了，在文章内描述了我的解决方法（不使用第三方的驱动管理软件）。" class="headerlink" title="不知你的电脑Internet访问的名称后面的数字增加到数字几了？这是电脑插入不同终端的网线引起的。而且电脑平时使用过程中会添加一些额外的网卡，网卡设备移除后，系统安装的驱动程序并没有随着移除而卸载。这个问题困扰我相当久了，在文章内描述了我的解决方法（不使用第三方的驱动管理软件）。"></a>不知你的电脑Internet访问的名称后面的数字增加到数字几了？这是电脑插入不同终端的网线引起的。而且电脑平时使用过程中会添加一些额外的网卡，网卡设备移除后，系统安装的驱动程序并没有随着移除而卸载。这个问题困扰我相当久了，在文章内描述了我的解决方法（不使用第三方的驱动管理软件）。</h3><h4 id="Internet名称的数字："><a href="#Internet名称的数字：" class="headerlink" title="Internet名称的数字："></a>Internet名称的数字：</h4><p>我倒腾路由（软硬都有），导致名称后的数字涨到了8 ，看着难受。这个网上有两种可行的方案，修改注册表和重置网络。修改注册表我没有尝试，我使用重置网络的方法（会清除所有的网络适配器并重新安装，组件设回原始设置，抹掉WiFi密码，拨号账户等。需要重新安装其他网络软件，VPN客户端，虚拟交换机等）。</p>
 <p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/WINDOWS%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/852149?fromtitle=windows&fromid=165458">Windows</a>设置选择网络和Internet<span id="more"></span></p>
-<p><img src="/../assets/Win10-DeviceManagement/1.jpg" alt="Win10 设备 管理 驱动"></p>
+<p><img src="/../assets/Win10-DeviceManagement/1.webp" alt="Win10 设备 管理 驱动"></p>
 <p>状态栏中点击网络重置，立即重置，等待电脑重启。</p>
-<p><img src="/../assets/Win10-DeviceManagement/2.jpg" alt="Win10 设备 管理 驱动"></p>
+<p><img src="/../assets/Win10-DeviceManagement/2.webp" alt="Win10 设备 管理 驱动"></p>
 <p>名称从零开始，看着好爽。</p>
 <h4 id="删除不存在的网络设备："><a href="#删除不存在的网络设备：" class="headerlink" title="删除不存在的网络设备："></a>删除不存在的网络设备：</h4><p>上述方法不能解决已经移除的网络属性问题（驱动依然存在）。</p>
-<p><img src="/../assets/Win10-DeviceManagement/3.jpg" alt="Win10 设备 管理 驱动"></p>
+<p><img src="/../assets/Win10-DeviceManagement/3.webp" alt="Win10 设备 管理 驱动"></p>
 <p>就像这样，已经移除不在使用的设备，状态会显示为不存在（同样在状态栏中点击看网络属性）。</p>
 <p>搜索的解决方法什么重置，修改注册表，全都不能实现。而且所有问题的回答都一模一样（复制粘贴）。本人不想用第三方的驱动管理软件，有点流氓，有广告。</p>
 <p>我使用电脑的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%BE%E5%A4%87%E7%AE%A1%E7%90%86%E5%99%A8">设备管理器</a>来管理已经移除的驱动设备。</p>
 <p>我的电脑右键选择管理，系统工具中的设备管理，我们在点击打开后显示的全部是当前所连接的硬件设备，没有显示未连接的设备。</p>
-<p><img src="/../assets/Win10-DeviceManagement/4.jpg" alt="Win10 设备 管理 驱动"></p>
+<p><img src="/../assets/Win10-DeviceManagement/4.webp" alt="Win10 设备 管理 驱动"></p>
 <p>只要在左侧设备管理选项右键，勾上显示隐藏的设备就可以了。</p>
-<p><img src="/../assets/Win10-DeviceManagement/5.jpg" alt="代码45"></p>
+<p><img src="/../assets/Win10-DeviceManagement/5.webp" alt="代码45"></p>
 <p>选择一个浅色的设备看一下它的属性：硬件设备没有连接计算机。</p>
 <p>设备没有连接，在网络属性中的状态就是不存在。现在只需要右键卸载没有连接的硬件设备就可以了。</p>
 <p>可以查看下其它的设备，不在使用的设备想卸载就卸载吧！</p>
@@ -408,9 +397,8 @@
 
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>

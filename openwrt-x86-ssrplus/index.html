@@ -20,8 +20,9 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="前几天编译openwrt x86 ，使用命令git pull时，makefile配置删除了ssr-plus，GitHub相关的代码也都删除了。这可怎么办呀？幸好以前pi4编译过，代码是git没有了，但makefile里的相关驱动没有删除，只是取消了选择。">
 <meta property="og:type" content="article">
@@ -30,15 +31,15 @@
 <meta property="og:site_name" content="Focus">
 <meta property="og:description" content="前几天编译openwrt x86 ，使用命令git pull时，makefile配置删除了ssr-plus，GitHub相关的代码也都删除了。这可怎么办呀？幸好以前pi4编译过，代码是git没有了，但makefile里的相关驱动没有删除，只是取消了选择。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tl8517.com/assets/x86-SSR-Plus/1.png">
-<meta property="og:image" content="https://tl8517.com/assets/x86-SSR-Plus/2.png">
+<meta property="og:image" content="https://tl8517.com/assets/x86-SSR-Plus/1.webp">
+<meta property="og:image" content="https://tl8517.com/assets/x86-SSR-Plus/2.webp">
 <meta property="article:published_time" content="2020-04-21T13:35:11.000Z">
-<meta property="article:modified_time" content="2021-10-24T08:38:56.320Z">
+<meta property="article:modified_time" content="2023-03-09T13:19:01.143Z">
 <meta property="article:author" content="csjtl">
 <meta property="article:tag" content="openWRT">
 <meta property="article:tag" content="ssrplus">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tl8517.com/assets/x86-SSR-Plus/1.png">
+<meta name="twitter:image" content="https://tl8517.com/assets/x86-SSR-Plus/1.webp">
 
 
 <link rel="canonical" href="https://tl8517.com/openwrt-x86-ssrplus/">
@@ -69,7 +70,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
 
   <main class="main">
@@ -90,7 +91,7 @@
       <p class="site-title">Focus</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">兴趣使燃</p>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
       <img class="custom-logo-image" src="/Img/Site-Avatar.png" alt="Focus">
   </div>
 
@@ -104,7 +105,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -176,7 +177,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -209,18 +210,6 @@
     </div>
 
     
-    <div class="sidebar-inner sidebar-blogroll">
-      <div class="links-of-blogroll animated">
-        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          链接
-        </div>
-        <ul class="links-of-blogroll-list">
-            <li class="links-of-blogroll-item">
-              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
-            </li>
-        </ul>
-      </div>
-    </div>
   </aside>
 
 
@@ -273,7 +262,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2021-10-24 16:38:56" itemprop="dateModified" datetime="2021-10-24T16:38:56+08:00">2021-10-24</time>
+      <time title="修改时间：2023-03-09 21:19:01" itemprop="dateModified" datetime="2023-03-09T21:19:01+08:00">2023-03-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,9 +296,9 @@
 <h4 id="在x86-makefile配置文件中选择相关依赖："><a href="#在x86-makefile配置文件中选择相关依赖：" class="headerlink" title="在x86 makefile配置文件中选择相关依赖："></a>在x86 makefile配置文件中选择相关依赖：</h4><p>在lede根目录make menuconfig，使用‘&#x2F;’搜索缺少依赖的文件名，找到文件的路径，按‘y’勾选。</p>
 <p>保存退出，make编译。</p>
 <p>重新编译的固件是不会显示ssrplus的，需要上传ssrplus的ipk文件，重新安装。提示如下：</p>
-<p><img src="/../assets/x86-SSR-Plus/1.png" alt="x86 ssr-plus"></p>
+<p><img src="/../assets/x86-SSR-Plus/1.webp" alt="x86 ssr-plus"></p>
 <p>刷新查看服务菜单，ssrplus就又回来了。</p>
-<p><img src="/../assets/x86-SSR-Plus/2.png" alt="x86 ssr-plus"></p>
+<p><img src="/../assets/x86-SSR-Plus/2.webp" alt="x86 ssr-plus"></p>
 <p>openwrt其他相关文章：</p>
 <p><a href="https://tl8517.com/category/system/openwrt/">https://tl8517.com/category/system/openwrt/</a></p>
 <p>lede源码：</p>
@@ -398,9 +387,8 @@
 
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>

@@ -20,8 +20,9 @@
 
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.3.0/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":false,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt 源码版本是 22.03 。Ubuntu系统为 20.04 。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx 默认 80 端口，主机名，时区，TimeZone，用户名&#x2F;登录名，隐藏登录用户名。脚本链接：https:&#x2F;&#x2F;github.co">
 <meta property="og:type" content="article">
@@ -30,21 +31,21 @@
 <meta property="og:site_name" content="Focus">
 <meta property="og:description" content="本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt 源码版本是 22.03 。Ubuntu系统为 20.04 。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx 默认 80 端口，主机名，时区，TimeZone，用户名&#x2F;登录名，隐藏登录用户名。脚本链接：https:&#x2F;&#x2F;github.co">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/script.png">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/banner.png">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hostname1.png">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hostname.png">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/username.png">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/username1.png">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hid.png">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/script.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/banner.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hostname1.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hostname.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/username.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/username1.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hid.webp">
 <meta property="article:published_time" content="2022-04-11T05:15:14.000Z">
-<meta property="article:modified_time" content="2022-04-15T16:01:13.590Z">
+<meta property="article:modified_time" content="2023-03-09T13:19:01.143Z">
 <meta property="article:author" content="csjtl">
 <meta property="article:tag" content="Ubuntu">
 <meta property="article:tag" content="OpenWRT">
 <meta property="article:tag" content="script">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tl8517.com/assets/openwrt-script-csjtl/script.png">
+<meta name="twitter:image" content="https://tl8517.com/assets/openwrt-script-csjtl/script.webp">
 
 
 <link rel="canonical" href="https://tl8517.com/openwrt-script-csjtl/">
@@ -75,7 +76,7 @@
   </noscript>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage">
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
   <div class="headband"></div>
 
   <main class="main">
@@ -96,7 +97,7 @@
       <p class="site-title">Focus</p>
       <i class="logo-line"></i>
     </a>
-      <p class="site-subtitle" itemprop="description">兴趣使燃</p>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
       <img class="custom-logo-image" src="/Img/Site-Avatar.png" alt="Focus">
   </div>
 
@@ -110,7 +111,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">14</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">16</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -182,7 +183,7 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -215,18 +216,6 @@
     </div>
 
     
-    <div class="sidebar-inner sidebar-blogroll">
-      <div class="links-of-blogroll animated">
-        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
-          链接
-        </div>
-        <ul class="links-of-blogroll-list">
-            <li class="links-of-blogroll-item">
-              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
-            </li>
-        </ul>
-      </div>
-    </div>
   </aside>
 
 
@@ -279,7 +268,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-04-16 00:01:13" itemprop="dateModified" datetime="2022-04-16T00:01:13+08:00">2022-04-16</time>
+      <time title="修改时间：2023-03-09 21:19:01" itemprop="dateModified" datetime="2023-03-09T21:19:01+08:00">2023-03-09</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -306,9 +295,9 @@
     
     <div class="post-body" itemprop="articleBody">
         <h4 id="本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt-源码版本是-22-03-。Ubuntu系统为-20-04-。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx-默认-80-端口，主机名，时区，TimeZone，用户名-x2F-登录名，隐藏登录用户名。"><a href="#本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt-源码版本是-22-03-。Ubuntu系统为-20-04-。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx-默认-80-端口，主机名，时区，TimeZone，用户名-x2F-登录名，隐藏登录用户名。" class="headerlink" title="本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt 源码版本是 22.03 。Ubuntu系统为 20.04 。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx 默认 80 端口，主机名，时区，TimeZone，用户名&#x2F;登录名，隐藏登录用户名。"></a>本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt 源码版本是 22.03 。Ubuntu系统为 20.04 。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx 默认 80 端口，主机名，时区，TimeZone，用户名&#x2F;登录名，隐藏登录用户名。</h4><p>脚本链接：<a target="_blank" rel="noopener" href="https://github.com/csjtl/csjtl-openwrt-script">https://github.com/csjtl/csjtl-openwrt-script</a></p>
-<h3 id="脚本结构"><a href="#脚本结构" class="headerlink" title="脚本结构"></a>脚本结构<span id="more"></span></h3><p><img src="/../assets/openwrt-script-csjtl/script.png" alt="脚本结构"></p>
+<h3 id="脚本结构"><a href="#脚本结构" class="headerlink" title="脚本结构"></a>脚本结构<span id="more"></span></h3><p><img src="/../assets/openwrt-script-csjtl/script.webp" alt="脚本结构"></p>
 <p>简单说明一下<br>diy_config 自定义的参数<br>git_source 获取源码，以后可添加自定义package的源<br>Config_make make的选择<br>Run_diy_config 执行diy config<br>Diy_config_recover 恢复diy的修改<br>Copy_firmware 拷贝固件到指定文件夹<br>Step_result 用来返回上条命令执行结果<br>通过 # 来执行或取消 </p>
-<h3 id="自定义banner"><a href="#自定义banner" class="headerlink" title="自定义banner"></a>自定义banner</h3><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/banner.png" alt="banner"></p>
+<h3 id="自定义banner"><a href="#自定义banner" class="headerlink" title="自定义banner"></a>自定义banner</h3><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/banner.webp" alt="banner"></p>
 <h4 id="diy-config-中的-banner"><a href="#diy-config-中的-banner" class="headerlink" title="diy_config 中的 banner"></a>diy_config 中的 banner</h4><pre><code>DIY_BANNER=&#39;
   _______                     ________        __
  |       |.-----.-----.-----.|  |  |  |.----.|  |_
@@ -377,8 +366,8 @@
 <p>直接替换diy配置文件</p>
 <h4 id="Diy-config-recover-中的-2"><a href="#Diy-config-recover-中的-2" class="headerlink" title="Diy_config_recover 中的"></a>Diy_config_recover 中的</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp ..<span class="regexp">/diy/</span>tmp<span class="regexp">/nginx.config ./</span><span class="keyword">package</span><span class="regexp">/feeds/</span>packages<span class="regexp">/nginx-util/</span>files/</span><br></pre></td></tr></table></figure>
 
-<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><h4 id="效果图-5"><a href="#效果图-5" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/hostname1.png" alt="hostname1"></p>
-<p><img src="/../assets/openwrt-script-csjtl/hostname.png" alt="hostname"></p>
+<h3 id="主机名"><a href="#主机名" class="headerlink" title="主机名"></a>主机名</h3><h4 id="效果图-5"><a href="#效果图-5" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/hostname1.webp" alt="hostname1"></p>
+<p><img src="/../assets/openwrt-script-csjtl/hostname.webp" alt="hostname"></p>
 <h4 id="diy-config-中的-3"><a href="#diy-config-中的-3" class="headerlink" title="diy_config 中的"></a>diy_config 中的</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">DIY_HOSTNAME</span>=<span class="string">&#x27;CSJNAME&#x27;</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="Run-diy-config-中的-3"><a href="#Run-diy-config-中的-3" class="headerlink" title="Run_diy_config 中的"></a>Run_diy_config 中的</h4><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> filter_keywords()&#123;</span><br><span class="line">	grep <span class="string">&quot;$1&quot;</span> .<span class="regexp">/package/</span>base-files<span class="regexp">/files/</span>bin<span class="regexp">/config_generate &gt; ../</span>diy<span class="regexp">/tmp/</span>tmp</span><br><span class="line">	temp=$(cat ..<span class="regexp">/diy/</span>tmp/tmp)</span><br><span class="line">	temp=$<span class="string">&quot;$&#123;temp#*\&#x27;&#125;&quot;</span></span><br><span class="line">	OLD_KEYWORDS=$<span class="string">&quot;$&#123;temp%*\&#x27;&#125;&quot;</span></span><br><span class="line">&#125;</span><br><span class="line">filter_keywords <span class="string">&quot;set system.\@system\[-1].hostname=&quot;</span></span><br><span class="line">sed -i <span class="string">&quot;s/hostname=&#x27;$OLD_KEYWORDS&#x27;/hostname=&#x27;$DIY_HOSTNAME&#x27;/&quot;</span> .<span class="regexp">/package/</span>base-files<span class="regexp">/files/</span>bin/config_generate</span><br></pre></td></tr></table></figure>
@@ -400,8 +389,8 @@
 
 
 
-<h3 id="用户名登录名"><a href="#用户名登录名" class="headerlink" title="用户名登录名"></a>用户名登录名</h3><h4 id="效果图-7"><a href="#效果图-7" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/username.png" alt="username"></p>
-<p><img src="/../assets/openwrt-script-csjtl/username1.png" alt="username1"></p>
+<h3 id="用户名登录名"><a href="#用户名登录名" class="headerlink" title="用户名登录名"></a>用户名登录名</h3><h4 id="效果图-7"><a href="#效果图-7" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/username.webp" alt="username"></p>
+<p><img src="/../assets/openwrt-script-csjtl/username1.webp" alt="username1"></p>
 <h4 id="diy-config-中的-5"><a href="#diy-config-中的-5" class="headerlink" title="diy_config 中的"></a>diy_config 中的</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#DIY_PASSWORD DIY_USERNAME</span></span><br><span class="line"><span class="attr">DIY_USERNAME</span>=<span class="string">&#x27;admin&#x27;</span></span><br></pre></td></tr></table></figure>
 
 
@@ -411,7 +400,7 @@
 <p>##.&#x2F;package&#x2F;system&#x2F;rpcd&#x2F;files&#x2F;rpcd.config 登录页面使用的用户，密码项，只能使用此用户登录。<br>##openwrt&#x2F;package&#x2F;base-files&#x2F;files&#x2F;etc&#x2F;passwd 新增用户<br>##openwrt&#x2F;package&#x2F;base-files&#x2F;files&#x2F;etc&#x2F;shadow 用户密码<br>##.&#x2F;feeds&#x2F;luci&#x2F;modules&#x2F;luci-base&#x2F;luasrc&#x2F;dispatcher.lua 页面显示的用户名</p>
 <h4 id="Diy-config-recover-中的-5"><a href="#Diy-config-recover-中的-5" class="headerlink" title="Diy_config_recover 中的"></a>Diy_config_recover 中的</h4><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#恢复DIY_USERNAME</span><br><span class="line">sed -i <span class="string">&quot;s*option username &#x27;$DIY_USERNAME&#x27;*option username &#x27;root&#x27;*&quot;</span> .<span class="regexp">/package/</span>system<span class="regexp">/rpcd/</span>files/rpcd.config</span><br><span class="line">sed -i <span class="string">&quot;s*option password &#x27;$DIY_USERNAME&#x27;*option password &#x27;\$p\$root&#x27;*&quot;</span> .<span class="regexp">/package/</span>system<span class="regexp">/rpcd/</span>files/rpcd.config</span><br><span class="line">sed -i <span class="string">&#x27;1d&#x27;</span> .<span class="regexp">/package/</span>base-files<span class="regexp">/files/</span>etc/passwd</span><br><span class="line">sed -i <span class="string">&#x27;1d&#x27;</span> .<span class="regexp">/package/</span>base-files<span class="regexp">/files/</span>etc/shadow</span><br><span class="line">#sed -i <span class="string">&quot;s/page.sysauth = \&quot;$DIY_USERNAME\&quot;/page.sysauth = \&quot;root\&quot;/&quot;</span> .<span class="regexp">/feeds/</span>luci<span class="regexp">/modules/</span>luci-mod-admin-mini<span class="regexp">/luasrc/</span>controller<span class="regexp">/mini/i</span>ndex.lua</span><br><span class="line">sed -i <span class="string">&quot;s/duser = \&quot;$DIY_USERNAME\&quot;/duser = \&quot;root\&quot;/&quot;</span> .<span class="regexp">/feeds/</span>luci<span class="regexp">/modules/</span>luci-base<span class="regexp">/luasrc/</span>dispatcher.lua</span><br></pre></td></tr></table></figure>
 
-<h3 id="隐藏登录名"><a href="#隐藏登录名" class="headerlink" title="隐藏登录名"></a>隐藏登录名</h3><h4 id="效果图-8"><a href="#效果图-8" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/hid.png" alt="hid"></p>
+<h3 id="隐藏登录名"><a href="#隐藏登录名" class="headerlink" title="隐藏登录名"></a>隐藏登录名</h3><h4 id="效果图-8"><a href="#效果图-8" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/hid.webp" alt="hid"></p>
 <h4 id="diy-config-中的-6"><a href="#diy-config-中的-6" class="headerlink" title="diy_config 中的"></a>diy_config 中的</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#DIY_HIDE</span></span><br><span class="line"><span class="attr">DIY_HIDE</span>=<span class="string">&#x27;n&#x27;</span></span><br></pre></td></tr></table></figure>
 
 
@@ -511,9 +500,8 @@
 
 
   
-  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.1/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
 <script src="/js/third-party/search/local-search.js"></script>
