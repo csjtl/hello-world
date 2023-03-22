@@ -4,6 +4,47 @@
   
     
     <entry>
+      <title>云岸GR02过线座线管干涉问题</title>
+      <link href="/gr02-guoxianzuo/"/>
+      <url>/gr02-guoxianzuo/</url>
+      
+        <content type="html"><![CDATA[<p>前段时间组装云岸GR02车架，穿线管油管时发现车身过线座上的变速拉线与过线座会干涉，在调整变速的几天已经出现磨损过线座的问题。<strong>可以使用2mm六方拆下螺丝，检查是否出现类似问题。文末有3d打印文件分享。</strong><br><img src="/../assets/gr02-guoxianzuo/DSC_0010.webp" alt="磨损过线座"></p><h3 id="磨损的过线座"><a href="#磨损的过线座" class="headerlink" title="磨损的过线座"></a>磨损的过线座</h3><p>不管拉线在油管上侧，下侧都能磨出凹痕。<span id="more"></span><br><img src="/../assets/gr02-guoxianzuo/DSC_0013.webp" alt="磨出凹痕"></p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>原装的过线座变速线是在靠近头管方向的，在油管前方，才出现这种情况。<br><img src="/../assets/gr02-guoxianzuo/DSC_0014.webp" alt="出现这种情况"><br>我调整线管油管方向重新画了一个座，解决此问题。<br><img src="/../assets/gr02-guoxianzuo/DSC_0012.webp" alt="解决后的图"></p><h3 id="装车效果图"><a href="#装车效果图" class="headerlink" title="装车效果图"></a>装车效果图</h3><p><img src="/../assets/gr02-guoxianzuo/DSC_0015.webp" alt="装车效果图"></p><h4 id="3d打印文件"><a href="#3d打印文件" class="headerlink" title="3d打印文件"></a>3d打印文件</h4><p><a href="../assets/gr02-guoxianzuo/%E7%A9%BF%E7%BA%BF%E6%89%A3.STL">穿线扣3d打印文件</a><br>数据尺寸是根据带漆的零件测量的，打印完成后如果需要喷漆上色，需要打磨多一些。<br>我手上还有四个多余的铝合金成品，有需要的可以联系我。出完不在提供，打印铝合金真是太贵了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> bicycle </category>
+          
+          <category> 向后突围 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> bike </tag>
+            
+            <tag> bicycle </tag>
+            
+            <tag> 拉线 </tag>
+            
+            <tag> 云岸GR02 </tag>
+            
+            <tag> 过线座 </tag>
+            
+            <tag> 干涉 </tag>
+            
+            <tag> 线管 </tag>
+            
+            <tag> 解决 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo-install-next</title>
       <link href="/hexo-install-next/"/>
       <url>/hexo-install-next/</url>
@@ -36,7 +77,7 @@
           
           <category> bicycle </category>
           
-          <category> 上坡如蜗牛-下坡似脱兔 </category>
+          <category> 向后突围 </category>
           
       </categories>
       
