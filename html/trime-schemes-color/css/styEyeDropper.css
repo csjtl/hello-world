@@ -1,0 +1,871 @@
+/* 颜色吸管 css 文件修改自 https://photokit.com/colors/eyedropper/?lang=zh*/
+
+.container {
+  position: relative;
+  top: 5px;                    /*字体区顶距*/
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.inner {
+  display: flex;
+  position: relative;
+  left: 5px;
+  align-items: center;
+  width: 1080px;                    /*字体区宽*/
+  background: #040404;                    /*字体区背景*/
+  border-radius: 9px;
+}
+
+.info {
+  position: absolute;
+  left: 30px;
+  line-height: 1.5;
+  color: white;
+  font-size: 24px;                    /*字体*/
+}
+
+.palette {
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 15px;
+}
+
+.heading {
+  position: relative;
+  left: -90px;
+  top: 29px;
+  font-size: 4rem;
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+}
+
+@media only screen and (max-width: 42.5rem) {
+  .heading {
+    font-size: 1.5rem;
+  }
+}
+
+.btn_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;                    /*字体区每条间距*/
+  height: 25px;                    /*字体区每条间距*/
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_candidate_separator_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_candidate_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_comment_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_text_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_label_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_candidate_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_candidate_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_comment_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_key_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_key_symbol_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_key_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_off_key_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_hilited_off_key_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_key_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_key_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_keyboard_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_key_symbol_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_off_key_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_off_key_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_preview_back_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_preview_text_color {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_key_fj {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bkg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_tkg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_benter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_tenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bgn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_tgn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bbs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_tbs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_baoe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_taoe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bh0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_th0 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bh1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_th1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bh2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_th2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bh3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_th3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_bh4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn_th4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin: 3px 3px 3px 3px;
+  background: rgb(255, 255, 255);
+  border: 0px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
+  color: #000000;
+  transform: scale(1.001);
+  transition: transform 0.35s ease-in-out, border-color 0.35s ease-in-out, background-color 0.35s ease-in-out;
+}
+
+.btn:focus-visible {
+  border-color: #90CBFB;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}
+
+.btn__icon {
+  width: 80%;
+  height: 80%;
+  fill: currentColor;
+}
+
+.error {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px;
+  font-size: 1.25rem;
+  text-align: center;
+  background: white;
+  color: red;
+}
+
+.error a {
+  text-decoration: none;
+  color: orange;
+}
+
+.info strong {
+  text-transform: uppercase;
+  font-size: 2rem;
+}
+

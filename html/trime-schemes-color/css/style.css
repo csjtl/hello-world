@@ -1,0 +1,610 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color0: #c52827;         /*keyboard_back_color主键盘背景*/
+
+    --color1_1: #c52827;         /*text_back_color打字区底色*/
+    --color1_2: #c62828;         /*back_color状态栏(候选区)/打字区光标（符号^）的背景*/
+    --color1_3: #ffffff;         /*text_color打字区光标的符号（^）颜色*/
+    --color1_4: #ffffff;         /*label_color打字区候选字词的序号数字标签*/
+
+    --color1_5: #c62828;         /*hilited_back_color打字区正在输入的编码区底色*/
+    --color1_6: #ffffff;         /*hilited_text_color打字区正在输入的编码颜色*/
+
+    --color1_7: #c62828;         /*hilited_candidate_back_color打字区高亮候选词的底色*/
+    --color1_8: #ffffff;         /*hilited_candidate_text_color打字区高亮候选词文字颜色*/
+    --color1_9: #ffffff;         /*hilited_comment_text_color打字区文字的符号，编码提示*/
+
+    --color2_1: #d04e4e;         /*candidate_separator_color候选区文字间分割线*/
+    --color2_2: #ffffff;         /*candidate_text_color候选区文字*/
+    --color2_3: #ffffff;         /*comment_text_color候选区文字上方的文字，符号，编码显示*/
+
+    --color3_1: #d04e4e;         /*key_back_color键盘按键背景*/
+    --color3_2: #ffffff;         /*key_text_color键盘按键文本*/
+    --color3_3: #ffffff;         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+
+
+    --color4_1: #c62828;         /*hilited_key_back_color点击按键时的底色*/
+    --color4_2: #d04c4c;         /*hilited_key_text_color点击按键时的文本*/
+    --color4_3: #d04c4c;         /*hilited_key_symbol_color点击按键时的符号*/
+
+    --color5_1: #ec1310;         /*preview_back_color按键弹出显示背景*/
+    --color5_2: #ffffff;         /*preview_text_color按键弹出显示文本*/
+
+    --color6_1: #f44236;         /*benter回车键背景色*/
+    --color6_2: #ffffff;         /*tenter回车键文字颜色*/
+    --color6_3: #ca3838;         /*bgn功能键背景色*/
+    --color6_4: #ffffff;         /*tgn功能键文字颜色*/
+    --color6_5: #ca3838;         /*bbs退格键背景色*/
+    --color6_6: #ffffff;         /*tbs退格键文字颜色*/
+
+    --color11116: #ffff60;         /*hilited_off_key_back_color高亮按键关闭状态背景（未知）*/
+    --color11117: #ffff61;         /*hilited_off_key_text_color高亮按键关闭状态文本（未知）*/
+    --color11133: #ffff72;         /*hilited_on_key_back_color: 0xffd3d7da #标明按键打开状态背景（未知）*/
+    --color11134: #ffff80;         /*hilited_on_key_text_color: 0xff000000 #标明按键打开状态文字（未知）*/
+    --color11122: #ffff66;         /*off_key_back_color按键关闭状态背景（未知）*/
+    --color11123: #ffff67;         /*off_key_text_color按键关闭状态文本（未知）*/
+    --color11136: #ffd181;         /*on_key_back_color: 0xff23948e #按键打开状态背景（未知）*/
+    --color11137: #5a5a04;         /*on_key_text_color: 0xff37474f #按键打开状态文字（未知）*/
+    --color11132: #ffa571;         /*border_color: 0xffff0000 #边框*/
+    --color11135: #ffff79;         /*shadow_color: 0xff000000 #阴影*/
+    --color11138: #daff83;         /*key_fj_back_color: 0xfff44236 #fj按键背景*/
+    --color11139: #ff8488;         /*key_border_color: 0xffeceff1 #按键边框*/
+    --color11147: #87ffe9;         /*候选词1正常数字*/
+    --color11148: #ffff88;         /*候选词1正常文字*/
+    --color11149: #89ff8f;         /*候选词1正常上标*/
+    --color11150: #87ffe9;         /*a键按住时背景*/
+    --color11151: #ffff88;         /*a键按住时文字*/
+    --color11152: #89ff8f;         /*a键按住时上标*/
+    --color11126: #ffff70;         /*key_fjfj按鍵背景*/
+
+}
+
+main {
+    margin: 50px auto;
+    width: 900px;
+}
+
+.HuaBu {
+    width: 1080px;
+    height: 984px;
+  /*  background: rgb(0, 0, 0);
+    background: url(../img/Sc.png);
+    background-size: 1080px 984px;
+    background-repeat: no-repeat;
+*/
+}
+
+.DaziQu {
+    position: relative;
+    left: 6px;
+    /*border-style: solid;*/
+    height: 155px;
+    width: 221px;
+    background: var(--color1_1);         /*text_back_color打字区底色*/
+}
+
+.Container {
+    display: flex;
+	justify-content: space-between;
+  }
+
+.BianMaQu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 107px;
+    height: 41px;
+    background: var(--color1_5);         /*hilited_back_color打字区正在输入的编码区底色*/
+}
+
+#daimaqu_font {
+    text-align: center;
+    line-height: 38px;
+    margin: auto;
+    font-size: 25px;
+    color: var(--color1_6);         /*hilited_text_color打字区正在输入的编码颜色*/
+}
+
+.GuangBiaoQu {
+    position: relative;
+    top: 10px;
+    left: 117px;
+    width: 12px;
+    height: 41px;
+    background: var(--color1_2);         /*back_color状态栏(候选区)/打字区光标（符号^）的背景*/
+}
+
+#guangbiaoqu_font {
+    text-align: center;
+    line-height: 74px;
+    margin: auto;
+    color: var(--color1_3);         /*text_color打字区光标的符号（^）颜色*/
+}
+
+.HouXuanCi_one {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 205px;
+    height: 51.5px;
+    background: var(--color1_7);         /*hilited_candidate_back_color打字区高亮候选词的底色*/
+}
+
+#houxuanci_one_number {
+    position: absolute;
+    left: 2px;
+    line-height: 45px;
+    font-size: 34px;
+    color: var(--color1_8);         /*label_color打字区候选字词的序号数字标签*/
+}
+
+#houxuanci_one_font {
+    position: absolute;
+    left: 44px;
+    line-height: 48px;
+    font-size: 32px;
+    color: var(--color1_8);         /*hilited_candidate_text_color打字区高亮候选词文字颜色*/
+}
+
+#houxuanci_one_shangbiao {
+    position: absolute;
+    left: 174px;
+    line-height: 55px;
+    font-size: 28px;
+    color: var(--color1_9);         /*hilited_comment_text_color打字区文字的符号，编码提示*/
+}
+
+.HouXuanCi_two {
+    position: relative;
+    top: 10px;
+    left: 10px;
+    width: 205px;
+    height: 51.5px;
+    background:  var(--color1_1);
+}
+
+#houxuanci_two_number {
+    position: absolute;
+    left: 2px;
+    line-height: 55px;
+    font-size: 34px;
+    color: var(--color1_4);         /*label_color打字区候选字词的序号数字标签*/
+}
+
+#houxuanci_two_font {
+    position: absolute;
+    left: 43px;
+    line-height: 57px;
+    font-size: 32px;
+    color: var(--color2_2);
+}
+
+.ZhuangTaiLan {
+    position: relative;
+    top: 1px;
+    height: 94px;
+    width: 1080px;
+    background-color: var(--color1_2);         /*back_color状态栏(候选区)/打字区光标（符号^）的背景*/
+}
+
+#zhuangtailan_font {
+    position: absolute;
+    color: var(--color2_2);         /*candidate_text_color候选区文字*/
+}
+
+#zhuangtailan_shangbiao {
+    position: absolute;
+    color: var(--color2_3);         /*comment_text_color候选区文字上方的文字，符号，编码显示*/
+}
+
+
+.jiangexian_dise {
+    width: 2px;
+    height: 54px;
+    background-color: var(--color2_1);         /*candidate_separator_color候选区文字间分割线*/
+    position: relative;
+    top: 19px;
+}
+
+
+.AnJianQu {
+    position: relative;
+    top: 1px;
+    background-color: var(--color0);         /*keyboard_back_color主键盘背景*/
+    height: 736px;
+    width: 1080px;
+}
+
+.AnJian_1 {
+    position: relative;
+    top: 15px;
+    width: 94px;
+    height: 126px;
+    background-color: var(--color3_1);         /*key_back_color键盘按键背景*/
+    border-radius: 16px;
+}
+
+.AnJian_1_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_1_zimu {
+    text-align: center;
+    font-size: 55px;
+    position: relative;
+    color: var(--color3_2);         /*key_text_color键盘按键文本*/
+    top: -7px;
+}
+
+.AnJian_2_dise {
+    width: 94px;
+    height: 126px;
+    background-color: var(--color3_1);         /*key_back_color键盘按键背景*/
+    position: relative;
+    top: 29px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_2_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_2_zimu {
+    text-align: center;
+    font-size: 55px;
+    position: relative;
+    color: var(--color3_2);         /*key_text_color键盘按键文本*/
+    top: -7px;
+}
+
+.AnJian_3_dise {
+    width: 94px;
+    height: 126px;
+    background-color: var(--color3_1);         /*key_back_color键盘按键背景*/
+    position: relative;
+    top: 45px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_3_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_3_zimu {
+    text-align: center;
+    font-size: 55px;
+    position: relative;
+    color: var(--color3_2);         /*key_text_color键盘按键文本*/
+    top: -7px;
+}
+
+.AnJian_4_dise {
+    width: 94px;
+    height: 126px;
+    background-color: var(--color3_1);         /*key_back_color键盘按键背景*/
+    position: relative;
+    top: 61px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_4_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_4_zimu {
+    text-align: center;
+    font-size: 55px;
+    position: relative;
+    color: var(--color3_2);         /*key_text_color键盘按键文本*/
+    top: -7px;
+}
+
+.AnJian_zimu_kl_font {
+    font-size: 50px;
+    text-align: center;
+    line-height: 122px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color3_2);
+}
+
+.AnJian_zimu_nm_font {
+    font-size: 50px;
+    text-align: center;
+    line-height: 122px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color3_2);         /*key_text_color键盘按键文本*/
+}
+
+.AnJian_fc_dise {
+    width: 114px;
+    height: 125px;
+    background-color:  var(--color6_3);         /*bgn功能键背景色*/
+    position: relative;
+    top: 61px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_fc_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 130px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color6_4);         /*tgn功能键文字颜色*/
+}
+
+.AnJian_tg_dise {
+    width: 180px;
+    height: 126px;
+    background-color:  var(--color6_5);         /*bbs退格键背景色*/
+    position: relative;
+    top: 61px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_tg_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 130px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color6_6);         /*tbs退格键文字颜色*/
+}
+
+.AnJian_czj_dise {
+    width: 120px;
+    height: 143px;
+    background-color:  var(--color6_3);         /*bgn功能键背景色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 55px;
+}
+
+.AnJian_czj_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_czj_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color6_4);         /*tgn功能键文字颜色*/
+}
+
+.AnJian_zt_dise {
+    width: 123px;
+    height: 143px;
+    background-color: var(--color6_3);         /*bgn功能键背景色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_zt_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_zt_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color6_4);         /*tgn功能键文字颜色*/
+}
+
+.AnJian_dh_dise {
+    width: 94px;
+    height: 143px;
+    background-color: var(--color6_3);         /*bgn功能键背景色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_dh_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_dh_zimu {
+    text-align: center;
+    font-size: 55px;
+    position: relative;
+    color: var(--color6_4);         /*tgn功能键文字颜色*/
+    top: -7px;
+}
+
+.AnJian_kg_dise {
+    width: 280px;
+    height: 143px;
+    background-color: var(--color4_1);         /*hilited_key_back_color点击按键时的底色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_kg_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color4_2);         /*hilited_key_text_color点击按键时的文本*/
+}
+
+.AnJian_kg_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color4_3);         /*hilited_key_symbol_color点击按键时的符号*/
+}
+
+.AnJian_jh_dise {
+    width: 94px;
+    height: 143px;
+    background-color: var(--color6_3);         /*bgn功能键背景色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_jh_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_jh_zimu {
+    text-align: center;
+    font-size: 55px;
+    position: relative;
+    color: var(--color6_4);         /*tgn功能键文字颜色*/
+    top: -7px;
+}
+
+.AnJian_gd_dise {
+    width: 94px;
+    height: 143px;
+    background-color:  var(--color6_3);         /*bgn功能键背景色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 16px;
+}
+
+.AnJian_gd_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_gd_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color6_4);         /*tgn功能键文字颜色*/
+}
+
+.AnJian_enter_dise {
+    width: 182px;
+    height: 143px;
+    background-color: var(--color6_1);         /*benter回车键背景色*/
+    position: relative;
+    top: 75px;
+    /*left: 7px;*/
+    border-radius: 66px;
+}
+
+.AnJian_enter_shangbiao {
+    text-align: center;
+    font-size: 27px;
+    color: var(--color3_3);         /*key_symbol_color键盘按键长按符号（按键主字母/文字上方）*/
+}
+
+.AnJian_enter_font {
+    font-size: 30px;
+    text-align: center;
+    line-height: 80px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color6_2);         /*tenter回车键文字颜色*/
+}
+
+.AnJian_xf_dise {
+    position: absolute;
+    top: 395px;
+    left: 386px;
+    width: 354px;
+    height: 119px;
+    background-color: var(--color5_1);         /*preview_back_color按键弹出显示背景*/
+    border-radius: 16px;
+    z-index: 1;
+}
+
+.AnJian_xf_font {
+    font-size: 70px;
+    text-align: center;
+    line-height: 130px;
+    /*文字水平居中*/
+    margin: auto;
+    /*div水平居中*/
+    color: var(--color5_2);         /*preview_text_color按键弹出显示文本*/
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
