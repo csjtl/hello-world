@@ -3,6 +3,16 @@
 
 // Tested in Chrome 95
 
+// 高度计算zoom
+var div_html = document.querySelector(".div_html");
+var percentage, appWidth = 768; //设置默认屏幕大小
+percentage = window.innerWidth * 100 / appWidth;
+//console.log("window.innerWidth = " + window.innerWidth);
+percentage = Math.floor(percentage) / 280;
+//console.log("Math.floor(percentage) = " + Math.floor(percentage));
+console.log("percentage = " + percentage);
+div_html.style.setProperty("zoom", percentage);
+
 function showNoSupport() {
   const $message = document.querySelector(".info");
   $message.innerHTML = "😢 Your browser does not support the EyeDropper API.";
