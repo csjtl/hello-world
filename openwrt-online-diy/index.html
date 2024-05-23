@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Img/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Img/favicon-32x32.webp">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Img/favicon-16x16.webp">
+  <link rel="mask-icon" href="/Img/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/Img/site.webmanifest">
+  <meta name="google-site-verification" content="fvwjkFuau0tORJ5I7dA2uBmezPpxGd9nadluTdygs-w">
+  <meta name="yandex-verification" content="90b58abcb217f0c8">
+  <meta name="baidu-site-verification" content="code-bVjVqeMI5c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-/4UQcSmErDzPCMAiuOiWPVVsNN2s3ZY/NsmXNcj0IFc=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.15.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":true,"style":"default"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="现在不是很想折腾了，稳定在了OpenWrt 官方的在线编译了。想升级时将参数拷贝进去，直接点击构建。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人）">
+<meta property="og:url" content="https://tl8517.com/openwrt-online-diy/">
+<meta property="og:site_name" content="Focus">
+<meta property="og:description" content="现在不是很想折腾了，稳定在了OpenWrt 官方的在线编译了。想升级时将参数拷贝进去，直接点击构建。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-online-diy/214230.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-online-diy/2024-05-23-20-03-14-251.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-online-diy/2024-05-23-20-03-35-037.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-online-diy/2024-05-23-20-03-41-831.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-online-diy/2024-05-23-20-05-02-413.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-online-diy/2024-05-23-20-06-36-302.webp">
+<meta property="article:published_time" content="2024-05-23T11:26:43.000Z">
+<meta property="article:modified_time" content="2024-05-23T14:06:19.733Z">
+<meta property="article:author" content="csjtl">
+<meta property="article:tag" content="openwrt">
+<meta property="article:tag" content="自定义">
+<meta property="article:tag" content="捣鼓单车">
+<meta property="article:tag" content="聚焦单车工作室">
+<meta property="article:tag" content="3d建模">
+<meta property="article:tag" content="3d打印">
+<meta property="article:tag" content="在线编译">
+<meta property="article:tag" content="官方网站">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tl8517.com/assets/openwrt-online-diy/214230.webp">
+
+
+<link rel="canonical" href="https://tl8517.com/openwrt-online-diy/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tl8517.com/openwrt-online-diy/","path":"openwrt-online-diy/","title":"OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人） | Focus</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MRCBCJ8ZQ"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-0MRCBCJ8ZQ","only_pageview":false}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+<script data-ad-client="ca-pub-7562598542957769" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Focus</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
+      <img class="custom-logo-image" src="/Img/Site-Avatar.webp" alt="Focus">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A1%AC%E4%BB%B6%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">硬件配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%AF%91"><span class="nav-number">2.</span> <span class="nav-text">在线编译</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%8C%85"><span class="nav-number">2.1.</span> <span class="nav-text">软件包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC"><span class="nav-number">2.2.</span> <span class="nav-text">启动脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%88%B7%E5%86%99"><span class="nav-number">3.</span> <span class="nav-text">设备刷写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E6%88%96%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5%EF%BC%9A"><span class="nav-number">4.</span> <span class="nav-text">视频或文章链接：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A290979342-%E8%81%9A%E7%84%A6%E5%8D%95%E8%BD%A6%E4%BA%A4%E6%B5%81%E7%BE%A4"><span class="nav-number">5.</span> <span class="nav-text">Q群：290979342(聚焦单车交流群)</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="csjtl"
+      src="/Img/Sidebar-Avatar.gif">
+  <p class="site-author-name" itemprop="name">csjtl</p>
+  <div class="site-description" itemprop="description">她无处不在</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">187</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/csjtl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;csjtl" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tl8517@gmail.com" title="E-Mail → mailto:tl8517@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/tl8517" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;tl8517" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/tl8517" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;tl8517" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/openwrt-online-diy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人） | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-05-23 19:26:43 / 修改时间：22:06:19" itemprop="dateCreated datePublished" datetime="2024-05-23T19:26:43+08:00">2024-05-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/bicycle/" itemprop="url" rel="index"><span itemprop="name">bicycle</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/bicycle/%E6%8D%A3%E9%BC%93%E5%8D%95%E8%BD%A6/" itemprop="url" rel="index"><span itemprop="name">捣鼓单车</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><img src="/../assets/openwrt-online-diy/214230.webp" alt="OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人）"><br>现在不是很想折腾了，稳定在了OpenWrt 官方的在线编译了。想升级时将参数拷贝进去，直接点击构建。</p>
+<span id="more"></span>
+
+<h2 id="硬件配置"><a href="#硬件配置" class="headerlink" title="硬件配置"></a>硬件配置</h2><p>主板：h77n-wifi （老主板，设备刷写部分有BIOS添加nvme模块实现pcie启动系统）</p>
+<p>cpu：i5-3470t</p>
+<p>硬盘：英特尔傲腾16G的</p>
+<h2 id="在线编译"><a href="#在线编译" class="headerlink" title="在线编译"></a>在线编译</h2><p>编译网址：<a target="_blank" rel="noopener" href="https://firmware-selector.openwrt.org/">https://firmware-selector.openwrt.org/</a></p>
+<p>本人常用型号：x86和ac88u；型号右侧有openwrt版号。</p>
+<h3 id="软件包"><a href="#软件包" class="headerlink" title="软件包"></a>软件包</h3><p>点击 ‘自定义已安装的软件包和&#x2F;或首次启动脚本’ 三角展开。已安装的软件包中可以添加你需要的插件需要的依赖包名（官方源没有的插件）。</p>
+<p>这是我自用的x86的包，包含了GitHub中插件oc所需的所有依赖。安装完成只需要把ipk文件上传安装一下就成了。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">base-files bash busybox ca-bundle ca-certificates coreutils-nohup curl dnsmasq-full dropbear e2fsprogs firewall4 fstools grub2-bios-setup ip-full ipset kmod-amazon-ena kmod-amd-xgbe kmod-bnx2 kmod-button-hotplug kmod-dwmac-intel kmod-e1000 kmod-e1000e kmod-forcedeth kmod-fs-vfat kmod-hwmon-coretemp kmod-hwmon-drivetemp kmod-hwmon-jc42 kmod-i2c-i801 kmod-igb kmod-igc kmod-inet-diag kmod-ixgbe kmod-leds-mlxcpld kmod-lib-objagg kmod-lib-parman kmod-mlxfw kmod-mlxsw-core kmod-mlxsw-i2c kmod-mlxsw-minimal kmod-mlxsw-pci kmod-mlxsw-spectrum kmod-nft-offload kmod-nft-tproxy kmod-r8169 kmod-tg3 kmod-tun kmod-usb2 kmod-usb3 kmod-usb-ledtrig-usbport kmod-usb-ohci libc libcap libcap-bin libgcc libustream-mbedtls logd luci luci-app-ddns luci-app-ttyd luci-base luci-compat luci-i18n-base-zh-cn luci-i18n-ddns-zh-cn luci-i18n-ksmbd-zh-cn luci-i18n-opkg-zh-cn luci-i18n-ttyd-zh-cn mkf2fs mlxsw_spectrum-firmware mtd netifd nftables odhcp6c odhcpd-ipv6only opkg partx-utils ppp ppp-mod-pppoe procd procd-seccomp procd-ujail ruby ruby-yaml uci uclient-fetch unzip urandom-seed urngd</span><br></pre></td></tr></table></figure>
+
+<h3 id="启动脚本"><a href="#启动脚本" class="headerlink" title="启动脚本"></a>启动脚本</h3><p>uci-defaults启动可以实现各种自定义</p>
+<p>这是我目前自用的</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt; &quot;EOF&quot; &gt; /etc/uci-defaults/99-custom</span><br><span class="line"></span><br><span class="line">uci -q batch &lt;&lt; EOI</span><br><span class="line">set system.@system[0].hostname=&#x27;OpenWrt-X86&#x27;</span><br><span class="line">set system.@system[0].zonename=&#x27;Asia/Shanghai&#x27;</span><br><span class="line"></span><br><span class="line">set ttyd.@ttyd[0].command=&#x27;/bin/login -f root&#x27;</span><br><span class="line"></span><br><span class="line">set network.lan.ipaddr=&#x27;10.0.0.1&#x27;</span><br><span class="line">set network.lan.netmask=&#x27;255.255.255.0&#x27;</span><br><span class="line">set network.wan=interface</span><br><span class="line">set network.wan.device=&#x27;eth1&#x27;</span><br><span class="line">set network.wan.proto=&#x27;pppoe&#x27;</span><br><span class="line">set network.wan.username=&#x27;XXXXXXXXXX&#x27;</span><br><span class="line">set network.wan.password=&#x27;mmmmmmm&#x27;</span><br><span class="line"></span><br><span class="line">set ddns.ddns=service</span><br><span class="line">set ddns.ddns.service_name=&#x27;google.com&#x27;</span><br><span class="line">set ddns.ddns.lookup_host=&#x27;xxxxx&#x27;</span><br><span class="line">set ddns.ddns.domain=&#x27;xxxxx&#x27;</span><br><span class="line">set ddns.ddns.username=&#x27;xxxxx&#x27;</span><br><span class="line">set ddns.ddns.password=&#x27;xxxxx&#x27;</span><br><span class="line">set ddns.ddns.ip_source=&#x27;interface&#x27;</span><br><span class="line">set ddns.ddns.interface=&#x27;pppoe-wan&#x27;</span><br><span class="line">set ddns.ddns.ip_interface=&#x27;pppoe-wan&#x27;</span><br><span class="line">EOI</span><br><span class="line"></span><br><span class="line">passwd root &lt;&lt; EOI</span><br><span class="line">8888</span><br><span class="line">8888</span><br><span class="line">EOI</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<p><code>cat &lt;&lt; &quot;EOF&quot; &gt; /etc/uci-defaults/99-custom</code> 创建名为99-custom的启动文件</p>
+<p><code>set system.@system[0].hostname=&#39;OpenWrt-X86&#39; set system.@system[0].zonename=&#39;Asia/Shanghai&#39;</code> 主机名和时区</p>
+<p><code>set ttyd.@ttyd[0].command=&#39;/bin/login -f root&#39;</code>ttyd自动登录</p>
+<p><code>set network.lan.ipaddr=&#39;10.0.0.1&#39; set network.lan.netmask=&#39;255.255.255.0&#39; set network.wan=interface set network.wan.device=&#39;eth1&#39; set network.wan.proto=&#39;pppoe&#39; set network.wan.username=&#39;XXXXXXXXXX&#39; set network.wan.password=&#39;mmmmmmm&#39;</code>lan口ip和拨号相关</p>
+<p><code>set ddns.ddns=service set ddns.ddns.service_name=&#39;google.com&#39; set ddns.ddns.lookup_host=&#39;xxxxx&#39; set ddns.ddns.domain=&#39;xxxxx&#39; set ddns.ddns.username=&#39;xxxxx&#39; set ddns.ddns.password=&#39;xxxxx&#39; set ddns.ddns.ip_source=&#39;interface&#39; set ddns.ddns.interface=&#39;pppoe-wan&#39; set ddns.ddns.ip_interface=&#39;pppoe-wan&#39;</code>ddns相关</p>
+<p><code>passwd root &lt;&lt; EOI 8888 8888 EOI</code>设置root密码为8888</p>
+<p>其它可使用<code>uci set</code>的自定参数可在自己已在运行使用的 openwrt 的终端或 ssh 中使用<code>uci show</code>命令显示。这些参数可以添加到uci-defaults中修改。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@OpenWrt:~# uci show</span><br><span class="line">ddns.global=ddns</span><br><span class="line">ddns.global.ddns_dateformat=&#x27;%F %R&#x27;</span><br><span class="line">ddns.global.ddns_loglines=&#x27;250&#x27;</span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+
+<p>下面是终端或ssh中执行的命令</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@OpenWrt:~# uci set network.lan.proto=&#x27;static&#x27;</span><br><span class="line">root@OpenWrt:~# uci set network.lan.ipaddr=&#x27;192.168.10.100&#x27;</span><br><span class="line">root@OpenWrt:~# uci set network.lan.netmask=&#x27;255.255.255.0&#x27;</span><br><span class="line">root@OpenWrt:~# uci set network.lan.gateway=&#x27;192.168.10.1&#x27;</span><br><span class="line">root@OpenWrt:~# uci set network.lan.dns=&#x27;8.8.8.8&#x27;</span><br><span class="line">root@OpenWrt:~# uci commit network</span><br><span class="line">root@OpenWrt:~# /etc/init.d/network reload</span><br></pre></td></tr></table></figure>
+
+<p>这几项完成后就可以请求构建，等待几分钟完成下载固件了。</p>
+<h2 id="设备刷写"><a href="#设备刷写" class="headerlink" title="设备刷写"></a>设备刷写</h2><p>我是u盘安装Ventoy，直接加载pe的iso文件，在pe中使用 IMG写盘工具.exe 直接写入ssd。</p>
+<p>因为是老主板，要pcie启动ssd 需要添加nvme模块，有兴趣可以查看<a href="https://tl8517.com/h77n-wifi-nvme/?highlight=h77">一个 pcie 插槽损坏的 h77n-wifi（BIOS添加nvme模块实现pcie启动操作系统）</a>这篇文章。</p>
+<p>进入pe后打开 IMG写盘工具 程序，选择要写入的盘和需要写入到盘的img文件。</p>
+<p><img src="/../assets/openwrt-online-diy/2024-05-23-20-03-14-251.webp" alt="选择要写入的盘和需要写入到盘的img文件"></p>
+<p>开始刷写</p>
+<p><img src="/../assets/openwrt-online-diy/2024-05-23-20-03-35-037.webp" alt="2024-05-23-20-03-35-037"></p>
+<p>完成后重启退出pe，进入op。</p>
+<p><img src="/../assets/openwrt-online-diy/2024-05-23-20-03-41-831.webp" alt="2024-05-23-20-03-41-831"></p>
+<p>这次重启进入op后uci-defaults中的文件并没有执行，因为文件还存在，op执行完成后会删除uci-defaults中文件。</p>
+<p><img src="/../assets/openwrt-online-diy/2024-05-23-20-05-02-413.webp" alt="2024-05-23-20-05-02-413"></p>
+<p>所以，reboot一下就行了。</p>
+<p><img src="/../assets/openwrt-online-diy/2024-05-23-20-06-36-302.webp" alt="2024-05-23-20-06-36-302"></p>
+<h2 id="视频或文章链接："><a href="#视频或文章链接：" class="headerlink" title="视频或文章链接："></a>视频或文章链接：</h2><p><a href="https://tl8517.com/">视频或文章标题</a></p>
+<h2 id="Q群：290979342-聚焦单车交流群"><a href="#Q群：290979342-聚焦单车交流群" class="headerlink" title="Q群：290979342(聚焦单车交流群)"></a>Q群：290979342(聚焦单车交流群)</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>聚焦单车
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tl8517.com/openwrt-online-diy/" title="OpenWrt在线编译（官方网址）及自定义（最适合我这种懒人）">https://tl8517.com/openwrt-online-diy/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/openwrt/" rel="tag"># openwrt</a>
+              <a href="/tags/%E8%87%AA%E5%AE%9A%E4%B9%89/" rel="tag"># 自定义</a>
+              <a href="/tags/%E6%8D%A3%E9%BC%93%E5%8D%95%E8%BD%A6/" rel="tag"># 捣鼓单车</a>
+              <a href="/tags/%E8%81%9A%E7%84%A6%E5%8D%95%E8%BD%A6%E5%B7%A5%E4%BD%9C%E5%AE%A4/" rel="tag"># 聚焦单车工作室</a>
+              <a href="/tags/3d%E5%BB%BA%E6%A8%A1/" rel="tag"># 3d建模</a>
+              <a href="/tags/3d%E6%89%93%E5%8D%B0/" rel="tag"># 3d打印</a>
+              <a href="/tags/%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%AF%91/" rel="tag"># 在线编译</a>
+              <a href="/tags/%E5%AE%98%E6%96%B9%E7%BD%91%E7%AB%99/" rel="tag"># 官方网站</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/rival-shifter-spare-part/" rel="prev" title="rival左手变的问题，结构及处理[单车3D打印配件分享]">
+                  <i class="fa fa-chevron-left"></i> rival左手变的问题，结构及处理[单车3D打印配件分享]
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fas fa-heart-broken"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">csjtl</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
