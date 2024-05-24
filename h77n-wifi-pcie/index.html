@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Img/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Img/site/favicon-32x32.webp">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Img/site/favicon-16x16.webp">
+  <link rel="mask-icon" href="/Img/site/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/Img/site.webmanifest">
+  <meta name="google-site-verification" content="fvwjkFuau0tORJ5I7dA2uBmezPpxGd9nadluTdygs-w">
+  <meta name="yandex-verification" content="90b58abcb217f0c8">
+  <meta name="baidu-site-verification" content="code-bVjVqeMI5c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前几天我的x86软路由主板莫名奇妙的烧了,CPU i3 2120和6G DDR3内存不能被淘汰喽,还能战半生.在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板. 改装 cpu 散热器 。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个 pcie 插槽损坏的 h77n-wifi  （修复pcie插槽 改装 cpu 散热器）">
+<meta property="og:url" content="https://tl8517.com/h77n-wifi-pcie/">
+<meta property="og:site_name" content="Focus">
+<meta property="og:description" content="前几天我的x86软路由主板莫名奇妙的烧了,CPU i3 2120和6G DDR3内存不能被淘汰喽,还能战半生.在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板. 改装 cpu 散热器 。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/01.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/02.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/03.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/04.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/05.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/06.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/07.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/08.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/09.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/10.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/11.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/12.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/13.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/14.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/15.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/16.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/17.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/18.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/19.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/20.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/21.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/22.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/23.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/24.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/25.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/26.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/27.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/28.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/29.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/30.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/31.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/32.webp">
+<meta property="og:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/33.webp">
+<meta property="article:published_time" content="2020-05-03T12:31:34.000Z">
+<meta property="article:modified_time" content="2023-03-09T13:19:55.000Z">
+<meta property="article:author" content="csjtl">
+<meta property="article:tag" content="h77">
+<meta property="article:tag" content="pcie">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tl8517.com/assets/H77N-WIFI-PCIE/01.webp">
+
+
+<link rel="canonical" href="https://tl8517.com/h77n-wifi-pcie/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tl8517.com/h77n-wifi-pcie/","path":"h77n-wifi-pcie/","title":"一个 pcie 插槽损坏的 h77n-wifi  （修复pcie插槽 改装 cpu 散热器）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>一个 pcie 插槽损坏的 h77n-wifi  （修复pcie插槽 改装 cpu 散热器） | Focus</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MRCBCJ8ZQ"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-0MRCBCJ8ZQ","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+<script data-ad-client="ca-pub-7562598542957769" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Focus</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
+      <img class="custom-logo-image" src="/Img/site/Site-Avatar.webp" alt="Focus">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%89%8D%E5%87%A0%E5%A4%A9%E6%88%91%E7%9A%84x86%E8%BD%AF%E8%B7%AF%E7%94%B1%E4%B8%BB%E6%9D%BF%E8%8E%AB%E5%90%8D%E5%A5%87%E5%A6%99%E7%9A%84%E7%83%A7%E4%BA%86-CPU-i3-2120%E5%92%8C6G-DDR3%E5%86%85%E5%AD%98%E4%B8%8D%E8%83%BD%E8%A2%AB%E6%B7%98%E6%B1%B0%E5%96%BD-%E8%BF%98%E8%83%BD%E6%88%98%E5%8D%8A%E7%94%9F-%E5%9C%A8%E4%BA%8C%E6%89%8B%E4%BA%A4%E6%98%93%E5%B9%B3%E5%8F%B0%E6%94%B6%E4%BA%86%E4%B8%80%E5%9D%97pcie%E6%8F%92%E6%A7%BD%E6%8B%94%E5%9D%8F%E7%9A%84%E6%8A%80%E5%98%89h77n-wifi%E4%B8%BB%E6%9D%BF-%E6%94%B9%E8%A3%85-cpu-%E6%95%A3%E7%83%AD%E5%99%A8-%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">前几天我的x86软路由主板莫名奇妙的烧了,CPU i3 2120和6G DDR3内存不能被淘汰喽,还能战半生.在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板. 改装 cpu 散热器 。</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="csjtl"
+      src="/Img/user/Sidebar-Avatar.gif">
+  <p class="site-author-name" itemprop="name">csjtl</p>
+  <div class="site-description" itemprop="description">她无处不在</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">187</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/csjtl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;csjtl" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tl8517@gmail.com" title="E-Mail → mailto:tl8517@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/19763939" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;19763939" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i>BiliBili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://makerworld.com/zh/@csjtl" title="MakerWorld → https:&#x2F;&#x2F;makerworld.com&#x2F;zh&#x2F;@csjtl" rel="noopener me" target="_blank"><i class="fa-solid fa-cube fa-fw"></i>MakerWorld</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/big/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/h77n-wifi-pcie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/user/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="一个 pcie 插槽损坏的 h77n-wifi  （修复pcie插槽 改装 cpu 散热器） | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          一个 pcie 插槽损坏的 h77n-wifi  （修复pcie插槽 改装 cpu 散热器）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-03 20:31:34" itemprop="dateCreated datePublished" datetime="2020-05-03T20:31:34+08:00">2020-05-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-03-09 21:19:55" itemprop="dateModified" datetime="2023-03-09T21:19:55+08:00">2023-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/misc/" itemprop="url" rel="index"><span itemprop="name">misc</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="前几天我的x86软路由主板莫名奇妙的烧了-CPU-i3-2120和6G-DDR3内存不能被淘汰喽-还能战半生-在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板-改装-cpu-散热器-。"><a href="#前几天我的x86软路由主板莫名奇妙的烧了-CPU-i3-2120和6G-DDR3内存不能被淘汰喽-还能战半生-在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板-改装-cpu-散热器-。" class="headerlink" title="前几天我的x86软路由主板莫名奇妙的烧了,CPU i3 2120和6G DDR3内存不能被淘汰喽,还能战半生.在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板. 改装 cpu 散热器 。"></a>前几天我的x86软路由主板莫名奇妙的烧了,CPU i3 2120和6G DDR3内存不能被淘汰喽,还能战半生.在二手交易平台收了一块pcie插槽拔坏的技嘉h77n-wifi主板. 改装 cpu 散热器 。<span id="more"></span></h3><p><img src="/../assets/H77N-WIFI-PCIE/01.webp" alt="h77 pcie"></p>
+<p>双千兆网口，WiFi单频2.4G，就算没有pcie扩展网口也是可以的。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/02.webp" alt="h77 pcie"></p>
+<p>大力出奇迹的效果</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/03.webp" alt="h77 pcie"></p>
+<p>主板上的原生灰尘</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/04.webp" alt="h77 pcie"></p>
+<p>两个sata2接口很久没有被插过了</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/05.webp" alt="h77 pcie"></p>
+<p><img src="/../assets/H77N-WIFI-PCIE/06.webp" alt="h77 pcie"></p>
+<p>几个用力过猛的固定螺孔</p>
+<p>收到包裹，当时开机试了试，，开机后电源反复启动，心里咯噔一下，插内存条，cpu，都不行，难道要翻车？？？？好在最后清BIOS好了。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/07.webp" alt="h77 pcie"></p>
+<p>经过我仔细观察，发现pcie的一个针脚的电路竟然断了！！！！</p>
+<p>网上查找了针脚定义：</p>
+<p>引脚</p>
+<p>B侧</p>
+<p>A侧</p>
+<p>1</p>
+<p>+12 V</p>
+<p>PRSNT1#</p>
+<p>2</p>
+<p>+12 V</p>
+<p>+12 V</p>
+<p>3</p>
+<p>+12 V</p>
+<p>+12 V</p>
+<p>4</p>
+<p>Ground</p>
+<p>Ground</p>
+<p>5</p>
+<p>SMCLK</p>
+<p>TCK</p>
+<p>6</p>
+<p>SMDAT</p>
+<p>TDI</p>
+<p>7</p>
+<p>Ground</p>
+<p>TDO</p>
+<p>8</p>
+<p>+3.3 V</p>
+<p>TMS</p>
+<p>9</p>
+<p>TRST#</p>
+<p>+3.3 V</p>
+<p>10</p>
+<p>+3.3 V aux</p>
+<p>+3.3 V</p>
+<p>11</p>
+<p>WAKE#</p>
+<p>PERST#</p>
+<p>断的为A侧（靠近CPU测）一号针脚，定义是</p>
+<p>PRSNT1#</p>
+<p>热拨插存在检测</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/08.webp"></p>
+<p>另一面没有原件，应该是不影响使用的吧？</p>
+<p>第二天当然是开始拆针脚了，</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/09.webp" alt="h77"></p>
+<p><img src="/../assets/H77N-WIFI-PCIE/10.webp"></p>
+<p>这么多脚。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/11.webp" alt="pcie"></p>
+<p>看看效果。本来网上买了pcie插槽的，奈何假期不发货，明天去科技市场买个喽。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/12.webp"></p>
+<p>顺便补了补热插拔。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/13.webp"></p>
+<p>以前买的电烙铁竟然融不了主板的锡，只能用它了。</p>
+<p>更新:</p>
+<p>科技市场没有找到新的，要现拆,从网上买了两个.</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/14.webp"></p>
+<p><img src="/../assets/H77N-WIFI-PCIE/15.webp"></p>
+<p>哪个好看!</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/16.webp" alt="pcie"></p>
+<p>两个都一样,尾部和芯片干涉.</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/17.webp" alt="pcie"></p>
+<p>解决问题,哪里不合适就削他.</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/18.webp" alt="pcie"></p>
+<p>吐血……焊点参差不齐,好难看!!!!</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/19.webp" alt="h77 pcie cpu 散热器"></p>
+<p>查上网卡</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/20.webp" alt="改装 散热器"></p>
+<p>看下散热管散热器</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/21.webp" alt="改装 散热器"></p>
+<p>在来一张。散热器是dell usff的散热器改来的，四个固定螺丝比普通主板的间距较小，我就向外扩了扩。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/22.webp" alt="h77 pcie cpu 散热器"></p>
+<p>usff没有高于cpu的电容电感等，要安装上就需要把散热器抬高。就在散热器和cpu之间夹了一块紫铜块。风扇插接件也需要调整线序。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/23.webp" alt="改装 散热器"></p>
+<p>散热器是安装上了，但是cpu供电座被挡在散热器下面了，只能切了一个插头，引线出来了。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/24.webp" alt="h77 pcie cpu 散热器"></p>
+<p>四口都可以识别,哈哈哈哈哈哈哈哈哈哈哈.</p>
+<p>完结,撒花.</p>
+<p>拆炸弹彩蛋：</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/25.webp" alt="power"></p>
+<p>这个电源就是，烧了的主板使用的，重量超轻。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/26.webp" alt="power"></p>
+<p>开盖看看。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/27.webp" alt="power"></p>
+<p>就这些部件，不能在多了。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/28.webp" alt="power"></p>
+<p>想起之前，偶尔会飘来烧糊的味道，不知道是不是这里发出的，还是主板上的原件散发的。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/29.webp" alt="power"></p>
+<p>背面，我什么都看不出来。</p>
+<p>前几天去科技市场，pcie插槽没买到，倒是看到一个中意的电源。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/30.webp" alt="power"></p>
+<p>就是它，80plus。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/31.webp" alt="power"></p>
+<p>180w，够用了，大小也正合适。</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/32.webp" alt="接头"></p>
+<p>有两个接头，主板供电和cpu供电。绿色PS_ON接地，cpu接头就输出12v供电。主板接头也有12v，是插电就输出。12v端的线就是拆的前任电源的改接的。</p>
+<p>烤鸡</p>
+<p><img src="/../assets/H77N-WIFI-PCIE/33.webp" alt="烤鸡"></p>
+<p>温度60°上下。</p>
+<p>我的苹果电脑：</p>
+<p><a href="https://tl8517.com/my-hackintosh/">https://tl8517.com/my-hackintosh/</a></p>
+<p>我的win10电脑（无声视频）：</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Bt411L71M">https://www.bilibili.com/video/BV1Bt411L71M</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/Img/pay/wechatpay.webp" alt="csjtl 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/Img/pay/alipay.webp" alt="csjtl 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>csjtl
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tl8517.com/h77n-wifi-pcie/" title="一个 pcie 插槽损坏的 h77n-wifi  （修复pcie插槽 改装 cpu 散热器）">https://tl8517.com/h77n-wifi-pcie/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/h77/" rel="tag"># h77</a>
+              <a href="/tags/pcie/" rel="tag"># pcie</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/opencore-build/" rel="prev" title="Opencore 的编译, 驱动的编译及导出">
+                  <i class="fa fa-angle-left"></i> Opencore 的编译, 驱动的编译及导出
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/ubuntu20-04-ssh-apache/" rel="next" title="Ubuntu20.04 关闭ssh apache服务也随之关闭，造成网站不能访问">
+                  Ubuntu20.04 关闭ssh apache服务也随之关闭，造成网站不能访问 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fas fa-heart-broken"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">csjtl</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
