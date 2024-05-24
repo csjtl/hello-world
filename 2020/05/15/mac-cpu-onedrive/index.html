@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Img/site/apple-touch-icon.webp">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Img/site/favicon-32x32.webp">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Img/site/favicon-16x16.webp">
+  <link rel="mask-icon" href="/Img/site/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/Img/site.webmanifest">
+  <meta name="google-site-verification" content="fvwjkFuau0tORJ5I7dA2uBmezPpxGd9nadluTdygs-w">
+  <meta name="yandex-verification" content="90b58abcb217f0c8">
+  <meta name="baidu-site-verification" content="code-bVjVqeMI5c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。有时在非apfs文件系统下，安装会提示文件随选功能不能打开，重启无效。有时会提示打开文件随选需要apfs格式。只需要将OneDrive的磁盘格式化为APFS格式。  对比之前的磁盘：以前的OneDrive文件夹磁盘为Mac扩展格式，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac OneDrive CPU 占用率过高 磁盘 分区 容器 APFS">
+<meta property="og:url" content="https://tl8517.com/2020/05/15/mac-cpu-onedrive/">
+<meta property="og:site_name" content="Focus">
+<meta property="og:description" content="这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。有时在非apfs文件系统下，安装会提示文件随选功能不能打开，重启无效。有时会提示打开文件随选需要apfs格式。只需要将OneDrive的磁盘格式化为APFS格式。  对比之前的磁盘：以前的OneDrive文件夹磁盘为Mac扩展格式，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/01.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/02.webp">
+<meta property="og:image" content="https://tl8517.com/assets/Mac-CPU-OneDrive/03.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/04.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/05.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/06.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/07.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/08.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/09.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/10.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/11.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/12.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/13.webp">
+<meta property="og:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/14.webp">
+<meta property="article:published_time" content="2020-05-15T02:26:53.000Z">
+<meta property="article:modified_time" content="2023-03-09T13:19:01.000Z">
+<meta property="article:author" content="csjtl">
+<meta property="article:tag" content="apfs">
+<meta property="article:tag" content="cpu">
+<meta property="article:tag" content="mac">
+<meta property="article:tag" content="onedrive">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tl8517.com/assets/MAC-Cpu-OneDrive/01.webp">
+
+
+<link rel="canonical" href="https://tl8517.com/2020/05/15/mac-cpu-onedrive/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tl8517.com/2020/05/15/mac-cpu-onedrive/","path":"2020/05/15/mac-cpu-onedrive/","title":"Mac OneDrive CPU 占用率过高 磁盘 分区 容器 APFS"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Mac OneDrive CPU 占用率过高 磁盘 分区 容器 APFS | Focus</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MRCBCJ8ZQ"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-0MRCBCJ8ZQ","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+<script data-ad-client="ca-pub-7562598542957769" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Focus</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
+      <img class="custom-logo-image" src="/Img/site/Site-Avatar.webp" alt="Focus">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">23</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%99%E5%87%A0%E5%A4%A9%E7%BB%99Mac%EF%BC%88%E9%BB%91%E8%8B%B9%E6%9E%9C%EF%BC%89%E6%8D%A2%E4%BA%86%E4%B8%80%E5%9D%97%E7%A1%AC%E7%9B%98%EF%BC%8C%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A0%BC%E5%BC%8F%E6%96%87%E4%BB%B6%E5%AE%89%E8%A3%85%E7%9A%84OneDrive%EF%BC%8C%E4%BC%9A%E5%BC%95%E8%B5%B7cpu%E5%8D%A0%E7%94%A8%E8%BF%87%E9%AB%98%EF%BC%8C%E6%9C%AA%E5%93%8D%E5%BA%94%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82apple%E7%A3%81%E7%9B%98%E5%88%86%E5%8C%BA%EF%BC%8C%E5%AE%B9%E5%99%A8%EF%BC%8C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%AE%A1%E7%90%86%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%A3%81%E7%9B%98%E6%A0%BC%E5%BC%8F%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">关于磁盘格式：</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="csjtl"
+      src="/Img/user/Sidebar-Avatar.gif">
+  <p class="site-author-name" itemprop="name">csjtl</p>
+  <div class="site-description" itemprop="description">她无处不在</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">90</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">23</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">187</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/csjtl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;csjtl" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tl8517@gmail.com" title="E-Mail → mailto:tl8517@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/19763939" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;19763939" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i>BiliBili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://makerworld.com/zh/@csjtl" title="MakerWorld → https:&#x2F;&#x2F;makerworld.com&#x2F;zh&#x2F;@csjtl" rel="noopener me" target="_blank"><i class="fa-solid fa-cube fa-fw"></i>MakerWorld</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/big/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/2020/05/15/mac-cpu-onedrive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/user/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Mac OneDrive CPU 占用率过高 磁盘 分区 容器 APFS | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mac OneDrive CPU 占用率过高 磁盘 分区 容器 APFS
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-05-15 10:26:53" itemprop="dateCreated datePublished" datetime="2020-05-15T10:26:53+08:00">2020-05-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-03-09 21:19:01" itemprop="dateModified" datetime="2023-03-09T21:19:01+08:00">2023-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/system/" itemprop="url" rel="index"><span itemprop="name">system</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/system/hackintosh/" itemprop="url" rel="index"><span itemprop="name">hackintosh</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h3 id="这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。"><a href="#这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。" class="headerlink" title="这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。"></a>这几天给Mac（黑苹果）换了一块硬盘，不同的格式文件安装的OneDrive，会引起cpu占用过高，未响应的问题。apple磁盘分区，容器，文件系统的管理。</h3><p>有时在非apfs文件系统下，安装会提示文件随选功能不能打开，重启无效。有时会提示打开文件随选需要apfs格式。只需要将OneDrive的磁盘格式化为<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/%E8%8B%B9%E6%9E%9C%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F">APFS</a>格式。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/01.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p>对比之前的磁盘：以前的OneDrive文件夹磁盘为Mac扩展格式，<span id="more"></span>以前安装OneDrive时什么也不提示。安装后，在同步阶段cpu占用率总是100%以上，而且OneDrive总是未响应，但程序还在运行。</p>
+<p>昨天就同步了一天还没有完成，今天只能卸载重装了好几次，才提示文件随选需要apfs格式</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/02.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p><img src="/../assets/Mac-CPU-OneDrive/03.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p>格式为apfs后的磁盘和运行OneDrive时cpu的状态。</p>
+<h4 id="关于磁盘格式："><a href="#关于磁盘格式：" class="headerlink" title="关于磁盘格式："></a>关于磁盘格式：</h4><p><img src="/../assets/MAC-Cpu-OneDrive/04.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p>抹掉整个磁盘，格式为apfs。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/05.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p>使用apfs格式会创建一个容器，共享容器内的存储空间，整个磁盘可以有好几个容器（就是分好几个区）也可以一个容器里面有好几个宗卷（文件夹磁盘）。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/06.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p>添加宗卷类似于创建文件夹，但这个“文件夹”是以独立磁盘的形式存在。放多骚文件，占用多骚的磁盘空间。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/07.webp" alt="Mac OneDrive CPU 高 磁盘 分区 容器 APFS"></p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/08.webp" alt="空间"></p>
+<p>分区就是分配磁盘空间，创建容器了。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/09.webp" alt="空间"></p>
+<p>容器里的磁盘，用多少空间，占用多大。</p>
+<p>删除分区：</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/10.webp" alt="删除"></p>
+<p>点击这个磁盘设备-&gt;分区，选中要删除的分区，点击‘-’号。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/11.webp" alt="删除"></p>
+<p>应用-&gt;分区-&gt;完成</p>
+<p>完结，撒花。</p>
+<p>不知能不能解决，每次开机OneDrive都要重新更新文件的问题。</p>
+<p>嘿！苹果归档内容：</p>
+<p><a href="https://tl8517.com/categories/System/Hackintosh/">https://tl8517.com/category/system/hackintosh/</a></p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/12.webp"></p>
+<p>吐血，现在不同步情况下OneDrive占用80-100%，隔几秒更新一下。可怕！！！！</p>
+<p>是应用问题？设置问题？系统问题？</p>
+<p>在来一遍，将数据放一个盘里，如果分出一个名为onedrive的宗卷，重新安装总是提示已经存在onedrive文件夹。</p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/13.webp"></p>
+<p><img src="/../assets/MAC-Cpu-OneDrive/14.webp"></p>
+<p>分出名为DATA的宗卷，里面有个onedrive文件夹，在试试</p>
+<p>测试目前没有问题。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/Img/pay/wechatpay.webp" alt="csjtl 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/Img/pay/alipay.webp" alt="csjtl 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>本文作者： </strong>csjtl
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tl8517.com/2020/05/15/mac-cpu-onedrive/" title="Mac OneDrive CPU 占用率过高 磁盘 分区 容器 APFS">https://tl8517.com/2020/05/15/mac-cpu-onedrive/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/apfs/" rel="tag"># apfs</a>
+              <a href="/tags/cpu/" rel="tag"># cpu</a>
+              <a href="/tags/mac/" rel="tag"># mac</a>
+              <a href="/tags/onedrive/" rel="tag"># onedrive</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/05/10/rpi4-argon-one/" rel="prev" title="pi4 外壳（ argon one  按键开关机，上壳金属）">
+                  <i class="fa fa-angle-left"></i> pi4 外壳（ argon one  按键开关机，上壳金属）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/05/20/win10-devicemanagement/" rel="next" title="Win10 设备管理驱动(删除已经移除的网络设备等)">
+                  Win10 设备管理驱动(删除已经移除的网络设备等) <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fas fa-heart-broken"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">csjtl</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
