@@ -4,6 +4,47 @@
   
     
     <entry>
+      <title>索尼 XZ2C LineageOS 20 更新 21</title>
+      <link href="/xz2c-update-lineageos/"/>
+      <url>/xz2c-update-lineageos/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/../assets/xz2c-update-lineageos/150929.webp" alt="文章导图"><br>索尼 XZ2C LineageOS 20 更新 21</p><span id="more"></span><h2 id="需要准备的"><a href="#需要准备的" class="headerlink" title="需要准备的"></a>需要准备的</h2><p><a href="https://download.lineageos.org/devices/xz2c/builds">LineageOS 21 安装包</a><br><a href="https://github.com/MindTheGapps/14.0.0-arm64/releases/tag/MindTheGapps-14.0.0-arm64-20240225_232108">Google Android 14</a> 或 <a href="https://wiki.lineageos.org/gapps/">Google 套装</a><br><a href="https://jesse205.github.io/MagiskChineseDocument/delta/main.html">Magisk Delta 文件</a><br><a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip">adb 驱动文件</a><br>fastboot 驱动安装（看文章内容）<br><a href="https://dl.google.com/android/repository/usb_driver_r13-windows.zip">USB 驱动</a></p><h2 id="安装驱动"><a href="#安装驱动" class="headerlink" title="安装驱动"></a>安装驱动</h2><h3 id="adb"><a href="#adb" class="headerlink" title="adb"></a>adb</h3><ul><li>解压 platform-tools-latest-windows.zip 压缩包到指定目录，并添加系统变量。</li></ul><p><img src="/../assets/xz2c-update-lineageos/134405.webp" alt="环境变量"></p><ul><li><p>shell 或 cmd<br> 输入 <code>adb devices</code> 验证是否识别到设备<br> 输入 <code>adb -d reboot sideload</code> 重启设备到 Recovery 模式</p> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\tl851&gt;adb devices</span><br><span class="line">List of devices attached</span><br><span class="line">BH999E9MCU      device</span><br><span class="line">C:\Users\tl851&gt;adb -d reboot sideload</span><br></pre></td></tr></table></figure></li></ul><h3 id="fastboot"><a href="#fastboot" class="headerlink" title="fastboot"></a>fastboot</h3><p>在 Recovery 模式查看设备管理器中设备驱动，有感叹号是没有驱动</p><img src="../assets/xz2c-update-lineageos/140132.webp" alt="没有驱动" style="zoom:200%;" /><p>安装：</p><ol><li>感叹号设备上右键-更新驱动程序</li><li>浏览我的电脑以查找驱动程序</li><li>从计算机可用驱动程序列表选取</li><li>硬件类型找到 Android Phone</li><li>型号选择 Android Bootloader Interface 确认安装</li></ol><p>输入 <code>fastboot devices</code> 验证是否识别到设备，不能识别没有输出。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\tl851&gt; fastboot devices</span><br><span class="line">?        fastboot</span><br></pre></td></tr></table></figure><h3 id="usb（没有用到）"><a href="#usb（没有用到）" class="headerlink" title="usb（没有用到）"></a>usb（没有用到）</h3><h2 id="升级刷写"><a href="#升级刷写" class="headerlink" title="升级刷写"></a>升级刷写</h2><p><a href="https://wiki.lineageos.org/devices/xz2c/upgrade/">官方流程</a></p><h3 id="Recovery-模式"><a href="#Recovery-模式" class="headerlink" title="Recovery 模式"></a>Recovery 模式</h3><p>输入 <code>adb -d reboot sideload</code> 重启设备到 Recovery 模式</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Users\tl851&gt;adb -d reboot sideload</span><br></pre></td></tr></table></figure><h3 id="刷写系统"><a href="#刷写系统" class="headerlink" title="刷写系统"></a>刷写系统</h3><p>输入 <code>adb -d sideload .\lineage-21.0-20240524-nightly-xz2c-signed.zip</code> 刷写系统<br>lineage-21.0-20240524-nightly-xz2c-signed.zip 文件在当前文件夹内</p>   <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\tl851&gt; adb -d sideload .\lineage-21.0-20240524-nightly-xz2c-signed.zip</span><br></pre></td></tr></table></figure><p>注：系统刷写有个说明</p><p><img src="/../assets/xz2c-update-lineageos/143729.webp" alt="说明"></p><h3 id="不需要全家桶"><a href="#不需要全家桶" class="headerlink" title="不需要全家桶"></a>不需要全家桶</h3><p>直接完成刷机重启需要全家桶，不能重启进系统，要选择 <code>Advanced</code> ，选择 <code>Reboot to Recovery</code> ，重启到 Recovery 模式后，选择 <code>Apply Update</code> ，选择 <code>Apply from ADB</code>，在执行下面的刷写。</p><h3 id="Google-全家桶"><a href="#Google-全家桶" class="headerlink" title="Google 全家桶"></a>Google 全家桶</h3><p>输入 <code>adb -d sideload .\MindTheGapps-14.0.0-arm64-20240225_232108.zip</code> 刷写 Google 全家桶</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\tl851&gt; adb -d sideload .\MindTheGapps-14.0.0-arm64-20240225_232108.zip</span><br></pre></td></tr></table></figure><h3 id="Magisk-Delta"><a href="#Magisk-Delta" class="headerlink" title="Magisk Delta"></a>Magisk Delta</h3><p>输入 <code>adb -d sideload .\26.4-kitsune.zip</code> 刷写面具 apk。zip 文件是面具 apk 文件直接修改文件名来的。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PS C:\Users\tl851&gt; adb -d sideload .\26.4-kitsune.zip</span><br></pre></td></tr></table></figure><h3 id="完成重启"><a href="#完成重启" class="headerlink" title="完成重启"></a>完成重启</h3><p><img src="/../assets/xz2c-update-lineageos/Screenshot.webp" alt="版本"></p><h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a href="%E7%BD%91%E5%9D%80%E9%93%BE%E6%8E%A5">视频或文章标题</a></p><h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="https://1drv.ms/u/s!Ajlt0jS9cFmqoLl3IUAWQ_Cq0MxHUw">所有文件备用 zip 包（20240529 整理）</a></p><h2 id="Q-群：290979342-聚焦单车交流群"><a href="#Q-群：290979342-聚焦单车交流群" class="headerlink" title="Q 群：290979342(聚焦单车交流群)"></a>Q 群：290979342(聚焦单车交流群)</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> bicycle </category>
+          
+          <category> 捣鼓单车 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 捣鼓单车 </tag>
+            
+            <tag> 聚焦单车工作室 </tag>
+            
+            <tag> 3d建模 </tag>
+            
+            <tag> 3d打印 </tag>
+            
+            <tag> XZ2C </tag>
+            
+            <tag> 更新 lineageOS </tag>
+            
+            <tag> 索尼 </tag>
+            
+            <tag> LineageOS 21 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>禧玛诺sl-tx30-7r后指拨安装3D打印按钮（装配原速）[单车3D打印配件分享]</title>
       <link href="/sl-tx30-7r-button/"/>
       <url>/sl-tx30-7r-button/</url>
