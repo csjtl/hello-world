@@ -11,15 +11,6 @@
   </url>
   
   <url>
-    <loc>https://tl8517.com/firmware-selector-openwrt-org/</loc>
-    
-    <lastmod>2024-05-30</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://tl8517.com/xz2c-update-lineageos/</loc>
     
     <lastmod>2024-05-30</lastmod>
@@ -2509,34 +2500,6 @@
   
   <url>
     <loc>https://tl8517.com/tags/ddns/</loc>
-    <lastmod>2024-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tl8517.com/tags/OpenWrt-%E5%9B%BA%E4%BB%B6%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
-    <lastmod>2024-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tl8517.com/tags/OpenWrt/</loc>
-    <lastmod>2024-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tl8517.com/tags/%E5%9B%BA%E4%BB%B6%E9%80%89%E6%8B%A9%E5%99%A8/</loc>
-    <lastmod>2024-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://tl8517.com/tags/%E6%9C%AC%E5%9C%B0%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%AF%91/</loc>
     <lastmod>2024-06-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

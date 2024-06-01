@@ -4,47 +4,6 @@
   
     
     <entry>
-      <title>OpenWrt 本地固件选择器（网页为本地，资源用openwrt源）</title>
-      <link href="/firmware-selector-openwrt-org/"/>
-      <url>/firmware-selector-openwrt-org/</url>
-      
-        <content type="html"><![CDATA[<p><img src="/%E5%9B%BE%E7%89%87%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84" alt="图片描述"><br>内容简述</p><span id="more"></span><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/openwrt/firmware-selector-openwrt-org.git</span><br><span class="line">sudo apt install nginx</span><br><span class="line"> sudo apt update</span><br><span class="line"> sudo apt upgrade</span><br><span class="line"> sudo apt install nginx</span><br><span class="line"> sudo vi /etc/nginx/sites-available/default</span><br><span class="line"> sudo vi /etc/nginx/nginx.conf</span><br><span class="line"> sudo systemctl restart nginx</span><br><span class="line"> </span><br><span class="line"> ./misc/collect.py https://downloads.openwrt.org  www/</span><br><span class="line"> ./misc/collect.py rsync://downloads.openwrt.org/downloads  www/</span><br></pre></td></tr></table></figure><h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a href="%E7%BD%91%E5%9D%80%E9%93%BE%E6%8E%A5">视频或文章标题</a></p><h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="%E6%96%87%E4%BB%B6%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84">文件名称</a></p><h2 id="Q群：290979342-聚焦单车交流群"><a href="#Q群：290979342-聚焦单车交流群" class="headerlink" title="Q群：290979342(聚焦单车交流群)"></a>Q群：290979342(聚焦单车交流群)</h2>]]></content>
-      
-      
-      <categories>
-          
-          <category> bicycle </category>
-          
-          <category> 捣鼓单车 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 捣鼓单车 </tag>
-            
-            <tag> 聚焦单车工作室 </tag>
-            
-            <tag> 3d建模 </tag>
-            
-            <tag> 3d打印 </tag>
-            
-            <tag> OpenWrt 固件选择器 </tag>
-            
-            <tag> OpenWrt </tag>
-            
-            <tag> 固件选择器 </tag>
-            
-            <tag> 本地在线编译 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>索尼 XZ2C LineageOS 20 更新 21</title>
       <link href="/xz2c-update-lineageos/"/>
       <url>/xz2c-update-lineageos/</url>
