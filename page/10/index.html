@@ -164,7 +164,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">92</span>
+          <span class="site-state-item-count">93</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,7 +175,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">197</span>
+        <span class="site-state-item-count">201</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -221,6 +221,102 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/wordpress-ip/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/user/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/wordpress-ip/" class="post-title-link" itemprop="url">wordpress ip 更换ip后wordpress无法登录（wordpress使用问题）</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-13 18:24:17" itemprop="dateCreated datePublished" datetime="2020-03-13T18:24:17+08:00">2020-03-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2023-03-09 21:19:01" itemprop="dateModified" datetime="2023-03-09T21:19:01+08:00">2023-03-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/build-personal-website/" itemprop="url" rel="index"><span itemprop="name">build personal website</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/build-personal-website/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="wordpress-ip-：建站前期摸索着，遇到很多问题。更换服务器，导致ip更换，使用原ip和现有ip都不能正常登陆，网上的方法只解决前半部分。（此文是建站完成后，重新编辑的，相关图片一部分找不回来了）"><a href="#wordpress-ip-：建站前期摸索着，遇到很多问题。更换服务器，导致ip更换，使用原ip和现有ip都不能正常登陆，网上的方法只解决前半部分。（此文是建站完成后，重新编辑的，相关图片一部分找不回来了）" class="headerlink" title="wordpress ip ：建站前期摸索着，遇到很多问题。更换服务器，导致ip更换，使用原ip和现有ip都不能正常登陆，网上的方法只解决前半部分。（此文是建站完成后，重新编辑的，相关图片一部分找不回来了）"></a>wordpress ip ：建站前期摸索着，遇到很多问题。更换服务器，导致ip更换，使用原ip和现有ip都不能正常登陆，网上的方法只解决前半部分。（此文是建站完成后，重新编辑的，相关图片一部分找不回来了）</h3><figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">csjtl@ubuntu:~$ mysql -u root -p                      //进入mysql</span><br><span class="line">mysql&gt; use wordpress;                                 //切换wordpress库</span><br><span class="line">Reading table information for completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line">Database changed</span><br><span class="line"><span class="section">mysql&gt; select * from wp_options where option_id=1;    //显示库wp_options参数</span></span><br><span class="line"><span class="section">+-----------+-------------+-----------------------+----------+</span></span><br><span class="line"><span class="section"> option_id  option_name  option_value           autoload </span></span><br><span class="line"><span class="section">+-----------+-------------+-----------------------+----------+</span></span><br><span class="line"><span class="section">         1  siteurl      http://192.168.55.178  yes      </span></span><br><span class="line"><span class="section">+-----------+-------------+-----------------------+----------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">mysql&gt; update wp<span class="emphasis">_options set option_value=&quot;http://192.168.55.178&quot; where option_id=1;//更改wp_option中的值</span></span><br><span class="line"><span class="emphasis">Query OK, 1 row affected (0.01 sec)</span></span><br><span class="line"><span class="emphasis">Rows matched: 1  Changed: 1  Warnings: 0</span></span><br><span class="line"><span class="emphasis">mysql&gt; select * from wp_options where option_id=1;     //查看更改</span></span><br><span class="line"><span class="emphasis">+-----------+-------------+-----------------------+----------+</span></span><br><span class="line"><span class="emphasis"> option_id  option_name  option_</span>value           autoload </span><br><span class="line"><span class="code">+-----------+</span>-------------<span class="code">+-----------------------+</span>----------+</span><br><span class="line"><span class="section">         1  siteurl      http://192.168.55.178  yes      </span></span><br><span class="line"><span class="section">+-----------+-------------+-----------------------+----------+</span></span><br><span class="line">1 row in set (0.00 sec)</span><br><span class="line">mysql&gt; exit                                             //退出</span><br><span class="line">Bye</span><br><span class="line">csjtl@ubuntu:~$ service mysql restart                   //重启mysql</span><br></pre></td></tr></table></figure>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/wordpress-ip/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
