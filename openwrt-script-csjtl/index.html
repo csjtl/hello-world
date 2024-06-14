@@ -39,10 +39,10 @@
 <meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/username1.webp">
 <meta property="og:image" content="https://tl8517.com/assets/openwrt-script-csjtl/hid.webp">
 <meta property="article:published_time" content="2022-04-11T05:15:14.000Z">
-<meta property="article:modified_time" content="2023-03-09T13:19:01.000Z">
+<meta property="article:modified_time" content="2024-06-14T08:30:01.029Z">
 <meta property="article:author" content="csjtl">
 <meta property="article:tag" content="Ubuntu">
-<meta property="article:tag" content="OpenWRT">
+<meta property="article:tag" content="openwrt">
 <meta property="article:tag" content="script">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://tl8517.com/assets/openwrt-script-csjtl/script.webp">
@@ -188,7 +188,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">210</span>
+        <span class="site-state-item-count">208</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -280,7 +280,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2023-03-09 21:19:01" itemprop="dateModified" datetime="2023-03-09T21:19:01+08:00">2023-03-09</time>
+      <time title="修改时间：2024-06-14 16:30:01" itemprop="dateModified" datetime="2024-06-14T16:30:01+08:00">2024-06-14</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -307,7 +307,7 @@
     
     <div class="post-body" itemprop="articleBody"><h4 id="本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt-源码版本是-22-03-。Ubuntu系统为-20-04-。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx-默认-80-端口，主机名，时区，TimeZone，用户名-登录名，隐藏登录用户名。"><a href="#本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt-源码版本是-22-03-。Ubuntu系统为-20-04-。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx-默认-80-端口，主机名，时区，TimeZone，用户名-登录名，隐藏登录用户名。" class="headerlink" title="本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt 源码版本是 22.03 。Ubuntu系统为 20.04 。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx 默认 80 端口，主机名，时区，TimeZone，用户名&#x2F;登录名，隐藏登录用户名。"></a>本人菜鸟，脚本算为熟悉源码结构，学习脚本而已。OpenWrt 源码版本是 22.03 。Ubuntu系统为 20.04 。使用脚本命令对源码追加，筛选，替换，循环，查找，删除等实现的自定义。目前脚本可以自定义baaner，IP，主题，网页终端自动登录，Nginx 默认 80 端口，主机名，时区，TimeZone，用户名&#x2F;登录名，隐藏登录用户名。</h4><p>脚本链接：<a target="_blank" rel="noopener" href="https://github.com/csjtl/csjtl-openwrt-script">https://github.com/csjtl/csjtl-openwrt-script</a></p>
 <h3 id="脚本结构"><a href="#脚本结构" class="headerlink" title="脚本结构"></a>脚本结构<span id="more"></span></h3><p><img src="/../assets/openwrt-script-csjtl/script.webp" alt="脚本结构"></p>
-<p>简单说明一下<br>diy_config 自定义的参数<br>git_source 获取源码，以后可添加自定义package的源<br>Config_make make的选择<br>Run_diy_config 执行diy config<br>Diy_config_recover 恢复diy的修改<br>Copy_firmware 拷贝固件到指定文件夹<br>Step_result 用来返回上条命令执行结果<br>通过 # 来执行或取消 </p>
+<p>简单说明一下<br>diy_config 自定义的参数<br>git_source 获取源码，以后可添加自定义package的源<br>Config_make make的选择<br>Run_diy_config 执行diy config<br>Diy_config_recover 恢复diy的修改<br>Copy_firmware 拷贝固件到指定文件夹<br>Step_result 用来返回上条命令执行结果<br>通过 # 来执行或取消</p>
 <h3 id="自定义banner"><a href="#自定义banner" class="headerlink" title="自定义banner"></a>自定义banner</h3><h4 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h4><p><img src="/../assets/openwrt-script-csjtl/banner.webp" alt="banner"></p>
 <h4 id="diy-config-中的-banner"><a href="#diy-config-中的-banner" class="headerlink" title="diy_config 中的 banner"></a>diy_config 中的 banner</h4><pre><code>DIY_BANNER=&#39;
   _______                     ________        __
@@ -471,7 +471,7 @@
 
           <div class="post-tags">
               <a href="/tags/Ubuntu/" rel="tag"># Ubuntu</a>
-              <a href="/tags/OpenWRT/" rel="tag"># OpenWRT</a>
+              <a href="/tags/openwrt/" rel="tag"># openwrt</a>
               <a href="/tags/script/" rel="tag"># script</a>
           </div>
 
