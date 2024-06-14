@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://tl8517.com/vps-server/</loc>
+    <lastmod>2024-06-14</lastmod>
+  </url>
+  <url>
     <loc>https://tl8517.com/openwrt-docker-ubuntu/</loc>
     <lastmod>2024-06-14</lastmod>
   </url>
@@ -254,10 +258,6 @@
   </url>
   <url>
     <loc>https://tl8517.com/ubuntu-lamp/</loc>
-    <lastmod>2023-03-09</lastmod>
-  </url>
-  <url>
-    <loc>https://tl8517.com/vps-server/</loc>
     <lastmod>2023-03-09</lastmod>
   </url>
   <url>
