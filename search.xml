@@ -4,18 +4,18 @@
   
     
     <entry>
-      <title>clash-local-subscription-conversion</title>
+      <title>openclash 自定义的本地节点转换（subconverter）</title>
       <link href="/clash-local-subscription-conversion/"/>
       <url>/clash-local-subscription-conversion/</url>
       
-        <content type="html"><![CDATA[<p><img src="/../assets/clash-local-subscription-conversion/215332.webp" alt="yml"><br>本地 clash 订阅转换，自定义适合自己的规则。</p><span id="more"></span><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="subconverter源文件下载"><a href="#subconverter源文件下载" class="headerlink" title="subconverter源文件下载"></a>subconverter源文件下载</h3><p><a href="https://github.com/tindy2013/subconverter/releases/download/v0.9.0/subconverter_linux64.tar.gz">https://github.com/tindy2013/subconverter/releases/download/v0.9.0/subconverter_linux64.tar.gz</a></p><h3 id="自定义规则列表"><a href="#自定义规则列表" class="headerlink" title="自定义规则列表"></a>自定义规则列表</h3><h4 id="脚本文件描述"><a href="#脚本文件描述" class="headerlink" title="脚本文件描述"></a>脚本文件描述</h4><h4 id="规则目录"><a href="#规则目录" class="headerlink" title="规则目录"></a>规则目录</h4><h3 id="订阅链接"><a href="#订阅链接" class="headerlink" title="订阅链接"></a>订阅链接</h3><p>generate.ini</p><h3 id="代理组，规则组"><a href="#代理组，规则组" class="headerlink" title="代理组，规则组"></a>代理组，规则组</h3><p>snippets&#x2F;groups.toml</p><p>snippets&#x2F;groups.txt</p><h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a href="%E7%BD%91%E5%9D%80%E9%93%BE%E6%8E%A5">视频或文章标题</a></p><h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="%E6%96%87%E4%BB%B6%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84">文件名称</a></p><h2 id="Q群：290979342-聚焦单车交流群"><a href="#Q群：290979342-聚焦单车交流群" class="headerlink" title="Q群：290979342(聚焦单车交流群)"></a>Q群：290979342(聚焦单车交流群)</h2>]]></content>
+        <content type="html"><![CDATA[<p><img src="/../assets/clash-local-subscription-conversion/215332.webp" alt="yml"><br>本地 clash 订阅转换，自定义适合自己的规则。（待更新)</p><span id="more"></span><h2 id="内容"><a href="#内容" class="headerlink" title="内容"></a>内容</h2><h3 id="subconverter源文件下载"><a href="#subconverter源文件下载" class="headerlink" title="subconverter源文件下载"></a>subconverter源文件下载</h3><p><a href="https://github.com/tindy2013/subconverter/releases/download/v0.9.0/subconverter_linux64.tar.gz">https://github.com/tindy2013/subconverter/releases/download/v0.9.0/subconverter_linux64.tar.gz</a></p><h3 id="自定义规则列表"><a href="#自定义规则列表" class="headerlink" title="自定义规则列表"></a>自定义规则列表</h3><h4 id="脚本文件描述"><a href="#脚本文件描述" class="headerlink" title="脚本文件描述"></a>脚本文件描述</h4><h4 id="规则目录"><a href="#规则目录" class="headerlink" title="规则目录"></a>规则目录</h4><h3 id="订阅链接"><a href="#订阅链接" class="headerlink" title="订阅链接"></a>订阅链接</h3><p>generate.ini</p><h3 id="代理组，规则组"><a href="#代理组，规则组" class="headerlink" title="代理组，规则组"></a>代理组，规则组</h3><p>snippets&#x2F;groups.toml</p><p>snippets&#x2F;groups.txt</p><h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a href="%E7%BD%91%E5%9D%80%E9%93%BE%E6%8E%A5">视频或文章标题</a></p><h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="%E6%96%87%E4%BB%B6%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84">文件名称</a></p><h2 id="Q群：290979342-聚焦单车交流群"><a href="#Q群：290979342-聚焦单车交流群" class="headerlink" title="Q群：290979342(聚焦单车交流群)"></a>Q群：290979342(聚焦单车交流群)</h2>]]></content>
       
       
       <categories>
           
-          <category> bicycle </category>
+          <category> embedded system </category>
           
-          <category> 捣鼓单车 </category>
+          <category> openwrt </category>
           
       </categories>
       
