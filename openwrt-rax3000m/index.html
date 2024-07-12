@@ -24,16 +24,18 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="内容简述暂未完全更新，有想刷固件的也可以联系我">
+    <meta name="description" content="内容简述更新，有想刷固件的也可以联系我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RAX3000M 修改配置文件，刷 u-boot 及 openwrt 固件">
 <meta property="og:url" content="https://tl8517.com/openwrt-rax3000m/">
 <meta property="og:site_name" content="Focus">
-<meta property="og:description" content="内容简述暂未完全更新，有想刷固件的也可以联系我">
+<meta property="og:description" content="内容简述更新，有想刷固件的也可以联系我">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://tl8517.com/assets/openwrt-rax3000m/195638.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-rax3000m/162407.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-rax3000m/154117.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-rax3000m/161811.webp">
 <meta property="article:published_time" content="2024-07-10T07:26:17.000Z">
-<meta property="article:modified_time" content="2024-07-11T12:39:01.168Z">
+<meta property="article:modified_time" content="2024-07-12T08:25:47.257Z">
 <meta property="article:author" content="csjtl">
 <meta property="article:tag" content="捣鼓单车">
 <meta property="article:tag" content="聚焦单车工作室">
@@ -43,7 +45,7 @@
 <meta property="article:tag" content="RAX3000M">
 <meta property="article:tag" content="u-boot">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://tl8517.com/assets/openwrt-rax3000m/195638.webp">
+<meta name="twitter:image" content="https://tl8517.com/assets/openwrt-rax3000m/162407.webp">
 
 
 <link rel="canonical" href="https://tl8517.com/openwrt-rax3000m/">
@@ -109,7 +111,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">28</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">29</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
         </a>
@@ -160,7 +162,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%88%B7%E5%86%99"><span class="nav-number">1.</span> <span class="nav-text">设备刷写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">导出编辑配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD"><span class="nav-number">1.2.</span> <span class="nav-text">备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-number">1.3.</span> <span class="nav-text">下载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0uboot%E6%96%87%E4%BB%B6-tmp"><span class="nav-number">1.4.</span> <span class="nav-text">上传uboot文件&#x2F;tmp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tftp"><span class="nav-number">1.5.</span> <span class="nav-text">tftp</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E5%9C%A8%E7%BA%BF%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">官方在线固件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%A5%E9%94%99"><span class="nav-number">2.1.</span> <span class="nav-text">报错</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E6%88%96%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5"><span class="nav-number">3.</span> <span class="nav-text">视频或文章链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">4.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A290979342%EF%BC%88%E8%81%9A%E7%84%A6%E5%8D%95%E8%BD%A6%E4%BA%A4%E6%B5%81%E7%BE%A4%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">Q群：290979342（聚焦单车交流群）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A977922094%EF%BC%88%E8%81%9A%E7%84%A6openwrt%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%B5%81%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">Q群：977922094（聚焦openwrt路由器交流）</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%A4%87%E4%BB%BD%EF%BC%8C%E5%8F%8A%E4%BD%BF%E8%83%BD-ssh"><span class="nav-number">1.</span> <span class="nav-text">设备备份，及使能 ssh</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E5%87%BA%E7%BC%96%E8%BE%91%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">1.1.</span> <span class="nav-text">导出编辑配置文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%87%E4%BB%BD"><span class="nav-number">1.2.</span> <span class="nav-text">备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%88%B7%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">设备刷写</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E6%96%87%E4%BB%B6"><span class="nav-number">2.1.</span> <span class="nav-text">下载文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8A%E4%BC%A0uboot%E6%96%87%E4%BB%B6-tmp"><span class="nav-number">2.2.</span> <span class="nav-text">上传uboot文件 &#x2F;tmp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tftp"><span class="nav-number">2.3.</span> <span class="nav-text">tftp</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%96%B0%E5%9B%BA%E4%BB%B6"><span class="nav-number">2.4.</span> <span class="nav-text">更新固件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E5%9C%A8%E7%BA%BF%E5%9B%BA%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">官方在线固件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Packages"><span class="nav-number">3.1.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uci-defaults"><span class="nav-number">3.2.</span> <span class="nav-text">uci-defaults</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E6%9C%BA%E5%AE%8C%E6%88%90%E5%90%8E"><span class="nav-number">3.3.</span> <span class="nav-text">刷机完成后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E6%88%96%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">视频或文章链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">5.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A290979342%EF%BC%88%E8%81%9A%E7%84%A6%E5%8D%95%E8%BD%A6%E4%BA%A4%E6%B5%81%E7%BE%A4%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">Q群：290979342（聚焦单车交流群）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A977922094%EF%BC%88%E8%81%9A%E7%84%A6-openwrt-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%B5%81%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">Q群：977922094（聚焦 openwrt 路由器交流）</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -181,12 +183,12 @@
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">218</span>
+        <span class="site-state-item-count">222</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -278,7 +280,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2024-07-11 20:39:01" itemprop="dateModified" datetime="2024-07-11T20:39:01+08:00">2024-07-11</time>
+      <time title="修改时间：2024-07-12 16:25:47" itemprop="dateModified" datetime="2024-07-12T16:25:47+08:00">2024-07-12</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -303,16 +305,28 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p><img src="/../assets/openwrt-rax3000m/195638.webp" alt="流程导图">内容简述<br>暂未完全更新，有想刷固件的也可以联系我</p>
+    <div class="post-body" itemprop="articleBody"><p><img src="/../assets/openwrt-rax3000m/162407.webp" alt="流程导图">内容简述<br>更新，有想刷固件的也可以联系我</p>
 <span id="more"></span>
 
 <p>刷机有风险，执行需谨慎。仅供参考。</p>
-<h2 id="设备刷写"><a href="#设备刷写" class="headerlink" title="设备刷写"></a>设备刷写</h2><h3 id="导出编辑配置文件"><a href="#导出编辑配置文件" class="headerlink" title="导出编辑配置文件"></a>导出编辑配置文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl aes-256-cbc -d -pbkdf2 -k $CmDc#RaX30O0M@\!$ -in cfg_export_config_file.conf -out - | tar -zxvf -</span><br></pre></td></tr></table></figure>
+<h2 id="设备备份，及使能-ssh"><a href="#设备备份，及使能-ssh" class="headerlink" title="设备备份，及使能 ssh"></a>设备备份，及使能 ssh</h2><h3 id="导出编辑配置文件"><a href="#导出编辑配置文件" class="headerlink" title="导出编辑配置文件"></a>导出编辑配置文件</h3><ul>
+<li>路由器网线连接电脑，登录路由器界面，在管理页面导出配置文件，解密解压。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl aes-256-cbc -d -pbkdf2 -k $CmDc#RaX30O0M@\!$ -in cfg_export_config_file.conf -out - | tar -zxvf -</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi etc/shadow</span><br><span class="line">vi etc/config/dropbear</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>vi etc/shadow</code><br> 第一行<code>root::</code>之间的删掉（加密的密码）</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">etc/shadow</span></span><br><span class="line">root::19179:0:99999:7:::</span><br><span class="line">daemon:*:0:0:99999:7:::</span><br><span class="line">ftp:*:0:0:99999:7:::</span><br><span class="line">network:*:0:0:99999:7:::</span><br><span class="line">nobody:*:0:0:99999:7:::</span><br><span class="line">ntp:x:0:0:99999:7:::</span><br><span class="line">dnsmasq:x:0:0:99999:7:::</span><br><span class="line">logd:x:0:0:99999:7:::</span><br><span class="line">ubus:x:0:0:99999:7:::</span><br></pre></td></tr></table></figure>
 
+<ul>
+<li><code>vi etc/config/dropbear</code>使能 ssh<br> <code>option enable</code> 设为 1</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">etc/config/dropbear</span></span><br><span class="line">config dropbear</span><br><span class="line">	option enable &#x27;1&#x27;</span><br><span class="line">	option PasswordAuth &#x27;on&#x27;</span><br><span class="line">	option RootPasswordAuth &#x27;on&#x27;</span><br><span class="line">	option Port         &#x27;22&#x27;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">	option BannerFile   <span class="string">&#x27;/etc/banner&#x27;</span></span></span><br></pre></td></tr></table></figure>
 
-
+<ul>
+<li>加密压缩成配置文件</li>
+</ul>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zcvf - etc | openssl aes-256-cbc -pbkdf2 -k $CmDc#RaX30O0M@\!$ -out cfg_export_config_file_new.conf</span><br></pre></td></tr></table></figure>
 
 <p>报错：<code>tar: Exiting with failure status due to previous errors</code><br>原因：<code>tar: etc/wireless/mediatek/DBDC_card0.dat: Cannot open: Permission denied</code>权限问题<br>执行：<code>chmod 751 etc/wireless/mediatek/DBDC_card0.dat</code></p>
@@ -322,22 +336,47 @@
 <p>备份分区</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dd if=/dev/mtd0 | gzip &gt;/tmp/mtd0_spi0.0.bin.gz</span><br><span class="line">dd if=/dev/mtd1 of=/tmp/mtd1_BL2.bin</span><br><span class="line">dd if=/dev/mtd2 of=/tmp/mtd2_u-boot-env.bin</span><br><span class="line">dd if=/dev/mtd3 of=/tmp/mtd3_Factory.bin</span><br><span class="line">dd if=/dev/mtd4 of=/tmp/mtd4_mtd4_FIP.bin</span><br><span class="line">dd if=/dev/mtd5 of=/tmp/mtd5_ubi.bin</span><br><span class="line">dd if=/dev/mtd6 of=/tmp/mtd6_plugins.bin</span><br><span class="line">dd if=/dev/mtd7 of=/tmp/mtd7_fwk.bin</span><br><span class="line">dd if=/dev/mtd8 of=/tmp/mtd8_fwk2.bin</span><br></pre></td></tr></table></figure>
 
-<h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-initramfs-recovery.itb</span><br><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-squashfs-sysupgrade.itb</span><br><span class="line"></span><br><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-nand-bl31-uboot.fip</span><br><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-nand-preloader.bin</span><br><span class="line">mtd-rw.ko</span><br></pre></td></tr></table></figure>
+<p>备份完成，浏览器路由器界面恢复刚修改的配置文件</p>
+<h2 id="设备刷写"><a href="#设备刷写" class="headerlink" title="设备刷写"></a>设备刷写</h2><p>使用 ssh 工具登录路由器<br>用户名：root<br>密码：空</p>
+<h3 id="下载文件"><a href="#下载文件" class="headerlink" title="下载文件"></a>下载文件</h3><p>mtd-rw.zip：文件用来擦除  BL2 驱动<br><a href="https://firmware-selector.openwrt.org/?version=23.05.3&amp;target=mediatek/filogic&amp;id=cmcc_rax3000m">https://firmware-selector.openwrt.org/?version=23.05.3&amp;target=mediatek%2Ffilogic&amp;id=cmcc_rax3000m</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-nand-bl31-uboot.fip</span><br><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-nand-preloader.bin</span><br><span class="line">mtd-rw.ko</span><br><span class="line"></span><br><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-initramfs-recovery.itb</span><br><span class="line">openwrt-mediatek-filogic-cmcc_rax3000m-squashfs-sysupgrade.itb</span><br></pre></td></tr></table></figure>
+
+<h3 id="上传uboot文件-tmp"><a href="#上传uboot文件-tmp" class="headerlink" title="上传uboot文件 &#x2F;tmp"></a>上传uboot文件 &#x2F;tmp</h3><p>使用工具将3个文件<code>openwrt-mediatek-filogic-cmcc_rax3000m-nand-bl31-uboot.fip</code><br><code>openwrt-mediatek-filogic-cmcc_rax3000m-nand-preloader.bin</code><br><code>mtd-rw.ko</code>上传到路由器 &#x2F;tmp 目录</p>
+<p>挂载驱动，擦除分区，写入分区</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insmod /tmp/mtd-rw.ko i_want_a_brick=1</span><br><span class="line">mtd erase BL2</span><br><span class="line">mtd write /tmp/openwrt-mediatek-filogic-cmcc_rax3000m-nand-preloader.bin BL2</span><br><span class="line">mtd erase FIP</span><br><span class="line">mtd write /tmp/openwrt-mediatek-filogic-cmcc_rax3000m-nand-bl31-uboot.fip FIP</span><br></pre></td></tr></table></figure>
+
+<h3 id="tftp"><a href="#tftp" class="headerlink" title="tftp"></a>tftp</h3><p>tftpd64.464.zip<br>文件传输<code>openwrt-mediatek-filogic-cmcc_rax3000m-initramfs-recovery.itb</code>首次安装或恢复使用</p>
+<h3 id="更新固件"><a href="#更新固件" class="headerlink" title="更新固件"></a>更新固件</h3><p>上步完成在 openwrt web界面更新<code>openwrt-mediatek-filogic-cmcc_rax3000m-squashfs-sysupgrade.itb</code></p>
+<h2 id="官方在线固件"><a href="#官方在线固件" class="headerlink" title="官方在线固件"></a>官方在线固件</h2><p><a href="https://firmware-selector.openwrt.org/?version=23.05.3&target=mediatek/filogic&id=cmcc_rax3000m">原版固件在线编译</a></p>
+<h3 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h3><p>已包含 openclash 所需的依赖，只需刷好固件后，将 openclash 的 ipk 文件上传安装即可。<br>最新<a target="_blank" rel="noopener" href="https://github.com/vernesong/OpenClash/releases/download/v0.46.014-beta/luci-app-openclash_0.46.014-beta_all.ipk">openclash ipk</a>下载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">base-files busybox ca-bundle dnsmasq dropbear e2fsprogs f2fsck firewall4 fstools kmod-crypto-hw-safexcel kmod-gpio-button-hotplug kmod-leds-gpio kmod-mt7915e kmod-mt7981-firmware kmod-nft-offload kmod-phy-aquantia kmod-usb3 libc libgcc libustream-mbedtls logd luci mkf2fs mt7981-wo-firmware mtd netifd nftables odhcp6c odhcpd-ipv6only opkg ppp ppp-mod-pppoe procd procd-seccomp procd-ujail uboot-envtools uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls</span><br><span class="line">-dnsmasq</span><br><span class="line">luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn luci-i18n-opkg-zh-cn luci-i18n-ddns-zh-cn luci-i18n-ttyd-zh-cn</span><br><span class="line">coreutils-nohup bash dnsmasq-full curl ca-certificates ipset ip-full libcap libcap-bin ruby ruby-yaml kmod-tun kmod-inet-diag unzip kmod-nft-tproxy luci-compat luci luci-base</span><br></pre></td></tr></table></figure>
+
+<h3 id="uci-defaults"><a href="#uci-defaults" class="headerlink" title="uci-defaults"></a>uci-defaults</h3><p>简单自定义几项参数，其它定义可参考：<br><a href="https://tl8517.com/openwrt-online-diy/">OpenWrt在线编译（官方网址）及自定义（openclash，设备名，密码等等）</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt; &quot;EOF&quot; &gt; /etc/uci-defaults/99-custom</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">密码</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">root_password=<span class="string">&quot;***************&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">主机名，时区</span></span><br><span class="line">host_name=&quot;OpenWrt-CMCC&quot;</span><br><span class="line">zone_name=&quot;Asia/Shanghai&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">终端自动登录</span></span><br><span class="line">ttyd_login=&quot;/bin/login -f root&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">主机名</span></span><br><span class="line">if [ -n &quot;$host_name&quot; ]; then</span><br><span class="line">  uci set system.@system[0].hostname=&quot;$host_name&quot;</span><br><span class="line">  uci commit system</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">时区</span></span><br><span class="line">if [ -n &quot;$zone_name&quot; ]; then</span><br><span class="line">  uci set system.@system[0].zonename=&quot;$zone_name&quot;</span><br><span class="line">  uci set system.@system[0].timezone=&#x27;UTC-8&#x27;</span><br><span class="line">  uci commit system</span><br><span class="line">  /etc/init.d/system reload</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">root密码</span></span><br><span class="line">if [ -n &quot;$root_password&quot; ]; then</span><br><span class="line">  (echo &quot;$root_password&quot;; sleep 1; echo &quot;$root_password&quot;) | passwd &gt; /dev/null</span><br><span class="line">fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">终端自动登录</span></span><br><span class="line">if [ -n &quot;$ttyd_login&quot; ]; then</span><br><span class="line">  uci set ttyd.@ttyd[0].command=&quot;$ttyd_login&quot;</span><br><span class="line">  uci commit ttyd</span><br><span class="line">fi</span><br><span class="line"></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 
 
 
-<h3 id="上传uboot文件-tmp"><a href="#上传uboot文件-tmp" class="headerlink" title="上传uboot文件&#x2F;tmp"></a>上传uboot文件&#x2F;tmp</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">insmod /tmp/mtd-rw.ko i_want_a_brick=1</span><br><span class="line">mtd erase BL2</span><br><span class="line">mtd write /tmp/openwrt-mediatek-filogic-cmcc_rax3000m-nand-preloader.bin BL2</span><br><span class="line">mtd erase FIP</span><br><span class="line">mtd write /tmp/openwrt-mediatek-filogic-cmcc_rax3000m-nand-bl31-uboot.fip FIP</span><br></pre></td></tr></table></figure>
+<h3 id="刷机完成后"><a href="#刷机完成后" class="headerlink" title="刷机完成后"></a>刷机完成后</h3><ul>
+<li><p>执行一下重启，自定义文件才能生效。</p>
+</li>
+<li><p>执行<code>opkg update</code>报错</p>
+</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Wget returned 5</span><br><span class="line">Wget returned 1</span><br></pre></td></tr></table></figure>
 
-<h3 id="tftp"><a href="#tftp" class="headerlink" title="tftp"></a>tftp</h3><p>tftpd64.464</p>
-<h2 id="官方在线固件"><a href="#官方在线固件" class="headerlink" title="官方在线固件"></a>官方在线固件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">base-files busybox ca-bundle dnsmasq dropbear e2fsprogs f2fsck firewall4 fstools kmod-crypto-hw-safexcel kmod-gpio-button-hotplug kmod-leds-gpio kmod-mt7915e kmod-mt7981-firmware kmod-nft-offload kmod-phy-aquantia kmod-usb3 libc libgcc libustream-mbedtls logd luci mkf2fs mt7981-wo-firmware mtd netifd nftables odhcp6c odhcpd-ipv6only opkg ppp ppp-mod-pppoe procd procd-seccomp procd-ujail uboot-envtools uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls</span><br><span class="line">-dnsmasq</span><br><span class="line">luci-i18n-base-zh-cn luci-i18n-firewall-zh-cn luci-i18n-opkg-zh-cn luci-i18n-ddns-zh-cn luci-i18n-ttyd-zh-cn</span><br><span class="line">coreutils-nohup bash dnsmasq-full curl ca-certificates ipset ip-full libcap libcap-bin ruby ruby-yaml kmod-tun kmod-inet-diag unzip kmod-nft-tproxy luci-compat luci luci-base</span><br></pre></td></tr></table></figure>
-
-<h3 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Wget returned 5</span><br><span class="line">Wget returned 1</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a href="https://tl8517.com/cmcc-cr8818/"><a href="https://tl8517.com/cmcc-cr8818/">路由器cmcc-cr8808（8818）取消运营商限制，开启 telnet，ssh</a></a></p>
-<h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="%E6%96%87%E4%BB%B6%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84">文件名称</a></p>
-<h2 id="Q群：290979342（聚焦单车交流群）"><a href="#Q群：290979342（聚焦单车交流群）" class="headerlink" title="Q群：290979342（聚焦单车交流群）"></a>Q群：290979342（聚焦单车交流群）</h2><h2 id="Q群：977922094（聚焦openwrt路由器交流）"><a href="#Q群：977922094（聚焦openwrt路由器交流）" class="headerlink" title="Q群：977922094（聚焦openwrt路由器交流）"></a>Q群：977922094（聚焦openwrt路由器交流）</h2>
+<p>配置 opkg 中，将 https 改为 http。</p>
+<p>版本 23.05.3 目前是5.15内核 </p>
+<p><img src="/../assets/openwrt-rax3000m/154117.webp" alt="5.15内核"></p>
+<p>快照版本已更新到 6.6 内核</p>
+<p><img src="/../assets/openwrt-rax3000m/161811.webp" alt="6.6"></p>
+<h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TJ4m1w7dR/?vd_source=b459f8bec4abb31d38ec4d8492220318">bili 视频 OpenWrt在线编译（官方网址）及自定义</a></p>
+<p><a href="https://tl8517.com/cmcc-cr8818/">路由器cmcc-cr8808（8818）取消运营商限制，开启 telnet，ssh</a></p>
+<p><a href="https://tl8517.com/clash-local-subscription-conversion/">openclash 自定义的本地节点转换（subconverter）</a></p>
+<p><a href="https://tl8517.com/openwrt-online-diy/">OpenWrt在线编译（官方网址）及自定义（openclash，设备名，密码等等）</a></p>
+<p><a href="https://tl8517.com/openwrt-default-config/">openwrt 默认配置编译（密码 语言 IP））</a></p>
+<p>自用的节点商，对于非常高清的视频没有需求可以试试，关键便宜，一个月十几块。<br><a target="_blank" rel="noopener" href="https://shandianpro.com/#/register?code=XeRqKeJ0">闪电</a></p>
+<h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="https://tl8517.com/">暂无，有网络找不到文件可以联系我</a></p>
+<h2 id="Q群：290979342（聚焦单车交流群）"><a href="#Q群：290979342（聚焦单车交流群）" class="headerlink" title="Q群：290979342（聚焦单车交流群）"></a>Q群：290979342（聚焦单车交流群）</h2><h2 id="Q群：977922094（聚焦-openwrt-路由器交流）"><a href="#Q群：977922094（聚焦-openwrt-路由器交流）" class="headerlink" title="Q群：977922094（聚焦 openwrt 路由器交流）"></a>Q群：977922094（聚焦 openwrt 路由器交流）</h2>
     </div>
 
     
