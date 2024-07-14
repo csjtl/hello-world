@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/Img/site/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/Img/site/favicon-32x32.webp">
+  <link rel="icon" type="image/png" sizes="16x16" href="/Img/site/favicon-16x16.webp">
+  <link rel="mask-icon" href="/Img/site/safari-pinned-tab.svg" color="#222">
+  <link rel="manifest" href="/Img/site.webmanifest">
+  <meta name="google-site-verification" content="fvwjkFuau0tORJ5I7dA2uBmezPpxGd9nadluTdygs-w">
+  <meta name="yandex-verification" content="90b58abcb217f0c8">
+  <meta name="baidu-site-verification" content="code-bVjVqeMI5c">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="/lib/@fortawesome/fontawesome-free/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="/lib/animate.css/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"tl8517.com","root":"/","images":"/assets","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"flat"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="老机器 ac88u 刷的原版openwrt 快照版的。固件是在线编译的，uci-defaults 配置自定义的参数。 代码相当的小白，因为我就小白。很简单，很容易看懂。 自己使用的配置应该都能使用 uci-defaults 配置好，这样编译的出的固件可以免后期配置，直接使用。后期有调整可以随时更改。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openwrt-ac88u">
+<meta property="og:url" content="https://tl8517.com/openwrt-ac88u/">
+<meta property="og:site_name" content="Focus">
+<meta property="og:description" content="老机器 ac88u 刷的原版openwrt 快照版的。固件是在线编译的，uci-defaults 配置自定义的参数。 代码相当的小白，因为我就小白。很简单，很容易看懂。 自己使用的配置应该都能使用 uci-defaults 配置好，这样编译的出的固件可以免后期配置，直接使用。后期有调整可以随时更改。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-ac88u/175431.webp">
+<meta property="og:image" content="https://tl8517.com/assets/openwrt-ac88u/153458.webp">
+<meta property="article:published_time" content="2024-07-14T08:34:51.000Z">
+<meta property="article:modified_time" content="2024-07-14T10:01:15.820Z">
+<meta property="article:author" content="csjtl">
+<meta property="article:tag" content="聚焦单车工作室">
+<meta property="article:tag" content="3d建模">
+<meta property="article:tag" content="3d打印">
+<meta property="article:tag" content="openwrt">
+<meta property="article:tag" content="在线编译">
+<meta property="article:tag" content="路由器">
+<meta property="article:tag" content="ac88u">
+<meta property="article:tag" content="原版固件">
+<meta property="article:tag" content="asus">
+<meta property="article:tag" content="华硕">
+<meta property="article:tag" content="聚焦路由 openwrt">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://tl8517.com/assets/openwrt-ac88u/175431.webp">
+
+
+<link rel="canonical" href="https://tl8517.com/openwrt-ac88u/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://tl8517.com/openwrt-ac88u/","path":"openwrt-ac88u/","title":"openwrt-ac88u"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>openwrt-ac88u | Focus</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MRCBCJ8ZQ"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"G-0MRCBCJ8ZQ","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+
+
+
+
+
+
+
+<script data-ad-client="ca-pub-7562598542957769" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js">
+</script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Focus</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">聚焦</p>
+      <img class="custom-logo-image" src="/Img/site/Site-Avatar.webp" alt="Focus">
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-docs"><a href="/docs/" rel="section"><i class="fa fa-book fa-fw"></i>Docs</a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">30</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="搜索..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%A4%87%E4%BB%BD"><span class="nav-number">1.</span> <span class="nav-text">设备备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E5%A4%87%E5%88%B7%E5%86%99"><span class="nav-number">2.</span> <span class="nav-text">设备刷写</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9C%A8%E7%BA%BF%E5%9B%BA%E4%BB%B6%EF%BC%88%E5%8E%9F%E7%89%88%E5%8F%8A%E8%87%AA%E5%AE%9A%E4%B9%89%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">在线固件（原版及自定义）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Packages"><span class="nav-number">3.1.</span> <span class="nav-text">Packages</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uci-defaults"><span class="nav-number">3.2.</span> <span class="nav-text">uci-defaults</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E5%90%8D%EF%BC%8C%E6%97%B6%E5%8C%BA"><span class="nav-number">3.2.1.</span> <span class="nav-text">主机名，时区</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%86%E7%A0%81"><span class="nav-number">3.2.2.</span> <span class="nav-text">密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wan-%E6%8B%A8%E5%8F%B7-pppoe-%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.2.3.</span> <span class="nav-text">wan 拨号 pppoe 协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#openclash-%E8%AE%A2%E9%98%85%E5%9C%B0%E5%9D%80"><span class="nav-number">3.2.4.</span> <span class="nav-text">openclash 订阅地址</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ddns"><span class="nav-number">3.2.5.</span> <span class="nav-text">ddns</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wifi-%E5%90%8D%E7%A7%B0%E5%8F%8A%E5%AF%86%E7%A0%81"><span class="nav-number">3.2.6.</span> <span class="nav-text">wifi 名称及密码</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lan-%E9%9D%99%E6%80%81%E5%8D%8F%E8%AE%AE%E5%9C%B0%E5%9D%80-lan-%E5%85%B6%E5%AE%83%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.2.7.</span> <span class="nav-text">lan 静态协议地址&#x2F;lan 其它协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#wan-%E5%85%B6%E5%AE%83%E5%8D%8F%E8%AE%AE"><span class="nav-number">3.2.8.</span> <span class="nav-text">wan 其它协议</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%88%E7%AB%AF%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95"><span class="nav-number">3.2.9.</span> <span class="nav-text">终端自动登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%85%B1%E4%BA%AB"><span class="nav-number">3.2.10.</span> <span class="nav-text">文件共享</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%A3%81%E7%9B%98%E6%8C%82%E8%BD%BD-1%EF%BC%9A-mnt-2%EF%BC%9A"><span class="nav-number">3.2.11.</span> <span class="nav-text">磁盘挂载 1：&#x2F;mnt 2：&#x2F;</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%B7%E6%9C%BA%E5%AE%8C%E6%88%90%E5%90%8E"><span class="nav-number">3.3.</span> <span class="nav-text">刷机完成后</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%86%E9%A2%91%E6%88%96%E6%96%87%E7%AB%A0%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">视频或文章链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E4%B8%8B%E8%BD%BD"><span class="nav-number">5.</span> <span class="nav-text">文件下载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A290979342%EF%BC%88%E8%81%9A%E7%84%A6%E5%8D%95%E8%BD%A6%E4%BA%A4%E6%B5%81%E7%BE%A4%EF%BC%89"><span class="nav-number">6.</span> <span class="nav-text">Q群：290979342（聚焦单车交流群）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Q%E7%BE%A4%EF%BC%9A977922094%EF%BC%88%E8%81%9A%E7%84%A6-openwrt-%E8%B7%AF%E7%94%B1%E5%99%A8%E4%BA%A4%E6%B5%81%EF%BC%89"><span class="nav-number">7.</span> <span class="nav-text">Q群：977922094（聚焦 openwrt 路由器交流）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="csjtl"
+      src="/Img/user/Sidebar-Avatar.gif">
+  <p class="site-author-name" itemprop="name">csjtl</p>
+  <div class="site-description" itemprop="description">她无处不在</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">100</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">30</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">227</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/csjtl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;csjtl" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:tl8517@gmail.com" title="E-Mail → mailto:tl8517@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://space.bilibili.com/19763939" title="BiliBili → https:&#x2F;&#x2F;space.bilibili.com&#x2F;19763939" rel="noopener me" target="_blank"><i class="fa-brands fa-bilibili fa-fw"></i>BiliBili</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://makerworld.com/zh/@csjtl" title="MakerWorld → https:&#x2F;&#x2F;makerworld.com&#x2F;zh&#x2F;@csjtl" rel="noopener me" target="_blank"><i class="fa-solid fa-cube fa-fw"></i>MakerWorld</a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/lib/@creativecommons/vocabulary/assets/license_badges/big/by_nc_nd.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          链接
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://tl8517.com/" title="https:&#x2F;&#x2F;tl8517.com">Title</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://tl8517.com/openwrt-ac88u/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/Img/user/Sidebar-Avatar.gif">
+      <meta itemprop="name" content="csjtl">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Focus">
+      <meta itemprop="description" content="她无处不在">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="openwrt-ac88u | Focus">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          openwrt-ac88u
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-07-14 16:34:51 / 修改时间：18:01:15" itemprop="dateCreated datePublished" datetime="2024-07-14T16:34:51+08:00">2024-07-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/embedded-devices/" itemprop="url" rel="index"><span itemprop="name">embedded devices</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/embedded-devices/ac88u/" itemprop="url" rel="index"><span itemprop="name">ac88u</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><img src="/../assets/openwrt-ac88u/175431.webp" alt="流程导图"><br>老机器 ac88u 刷的原版openwrt 快照版的。固件是在线编译的，uci-defaults 配置自定义的参数。</p>
+<p>代码相当的小白，因为我就小白。很简单，很容易看懂。</p>
+<p>自己使用的配置应该都能使用 uci-defaults 配置好，这样编译的出的固件可以免后期配置，直接使用。后期有调整可以随时更改。</p>
+<span id="more"></span>
+
+<p><strong><span style="color:#CC0000;">刷机有风险，执行需谨慎。仅供参考。</span></strong></p>
+<h2 id="设备备份"><a href="#设备备份" class="headerlink" title="设备备份"></a>设备备份</h2><p>自行论坛查找方法</p>
+<h2 id="设备刷写"><a href="#设备刷写" class="headerlink" title="设备刷写"></a>设备刷写</h2><p>自行论坛查找方法</p>
+<h2 id="在线固件（原版及自定义）"><a href="#在线固件（原版及自定义）" class="headerlink" title="在线固件（原版及自定义）"></a>在线固件（原版及自定义）</h2><p><a href="https://firmware-selector.openwrt.org/?version=SNAPSHOT&target=bcm53xx/generic&id=asus_rt-ac88u">ac88u 原版在线定制</a></p>
+<h3 id="Packages"><a href="#Packages" class="headerlink" title="Packages"></a>Packages</h3><p>分为三部分：原版默认包，其它包，openclash 所需的包。</p>
+<p>不想要的包，可删掉，或者新添一项加个<code>-</code>号。<br>比如默认包有<code>dnsmasq</code>，但是 openclash 需要<code>dnsmasq-full</code>这两个包只能用一个，不然报错。所以使用<code>-dnsmasq</code>取消掉默认包。</p>
+<p>其它包中有 dockerd 。刷入固件后软件包页面显示可用 40M ，因此需要挂载 u 盘。通过 uci-defaults 直接执行挂载。</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">base-files brcmfmac-firmware-4366b1-pcie brcmfmac-firmware-4366c0-pcie busybox ca-bundle dnsmasq dropbear firewall4 fstools iwinfo kmod-brcmfmac kmod-brcmfmac kmod-gpio-button-hotplug kmod-leds-gpio kmod-nft-offload kmod-phy-bcm-ns-usb2 kmod-phy-bcm-ns-usb3 kmod-usb-ledtrig-usbport kmod-usb-ohci kmod-usb2 kmod-usb3 libc libgcc libustream-mbedtls logd luci mtd netifd nftables nvram odhcp6c odhcpd-ipv6only opkg osafeloader oseama otrx ppp ppp-mod-pppoe procd procd-seccomp procd-ujail uci uclient-fetch urandom-seed urngd wpad-basic-mbedtls wpad-basic-mbedtls</span><br><span class="line"></span><br><span class="line">-dnsmasq block-mount blockd cfdisk docker-compose dockerd e2fsprogs fdisk kmod-fs-ext4 kmod-fs-ntfs kmod-fs-vfat kmod-usb-storage luci-i18n-attendedsysupgrade-zh-cn luci-i18n-base-zh-cn luci-i18n-ddns-zh-cn luci-i18n-dockerman-zh-cn luci-i18n-filebrowser-zh-cn luci-i18n-firewall-zh-cn luci-i18n-ksmbd-zh-cn luci-i18n-opkg-zh-cn luci-i18n-ttyd-zh-cn mount-utils mtd ntfs-3g kmod-lp kmod-usb-printer luci-i18n-p910nd-zh-cn blkid</span><br><span class="line"></span><br><span class="line">coreutils-nohup bash dnsmasq-full curl ca-certificates ipset ip-full libcap libcap-bin ruby ruby-yaml kmod-tun kmod-inet-diag unzip kmod-nft-tproxy luci-compat luci luci-base lsblk</span><br></pre></td></tr></table></figure>
+
+<h3 id="uci-defaults"><a href="#uci-defaults" class="headerlink" title="uci-defaults"></a>uci-defaults</h3><p>分为两部分：</p>
+<ul>
+<li>开头结尾的两行（编译时用来在<code>/etc/uci-defaults/</code>文件创建名为<code>99-custom</code>的开机启动文件。此文件执行成功，就会自动删掉。如果重启后还存在就是脚本没有执行）</li>
+<li>中间的为需要执行的代码。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br></pre></td><td class="code"><pre><span class="line">cat &lt;&lt; &quot;EOF&quot; &gt; /etc/uci-defaults/99-custom</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Beware! This script will be <span class="keyword">in</span> /rom/etc/uci-defaults/ as part of the image.</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Uncomment lines to apply:</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#########################################################</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">##################私人配置，分享要改#######################</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">密码</span></span><br><span class="line">root_password=&quot;XXXXXXXXXXX&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">wan 拨号 pppoe 协议</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">pppoe_username=<span class="string">&quot;XXXXXXXXXXX&quot;</span></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">pppoe_password=<span class="string">&quot;XXXXXXXXXXX&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">openclash 订阅地址</span></span><br><span class="line">clash_rules=&quot;http://XXXXXXXXXXX&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">ddns</span></span><br><span class="line">ddns_host=&#x27;XXXXXXXXXXX&#x27;</span><br><span class="line">ddns_username=&#x27;XXXXXXXXXXX&#x27;</span><br><span class="line">ddns_password=&#x27;XXXXXXXXXXX&#x27;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">wifi 名称及密码</span></span><br><span class="line">wlan_name=&quot;XXXXXXXXXXX&quot;</span><br><span class="line">wlan_password=&quot;XXXXXXXXXXX&quot;</span><br><span class="line">wlan_name_5G=&quot;XXXXXXXXXXX&quot;</span><br><span class="line">wlan_password_5G=&quot;XXXXXXXXXXX&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment">#########################################################</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">主机名，时区</span></span><br><span class="line">host_name=&quot;OpenWrt-AC88U&quot;</span><br><span class="line">zone_name=&quot;Asia/Shanghai&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">lan 静态协议地址/lan 其它协议</span></span><br><span class="line">lan_ip_address=&quot;10.0.0.1&quot;</span><br><span class="line">lan_netmask=&quot;255.255.255.0&quot;</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">lan_proto=<span class="string">&quot;dhcp&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">wan 其它协议</span></span><br><span class="line">wan_proto=&quot;dhcp&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">终端自动登录</span></span><br><span class="line">ttyd_login=&quot;/bin/login -f root&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">log</span> potential errors</span></span><br><span class="line">exec &gt;/tmp/setup.log 2&gt;&amp;1</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件共享</span></span><br><span class="line">k_smbd=&quot;1&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">磁盘挂载 1：/mnt 2：/</span></span><br><span class="line">mnt_disk=&quot;2&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">开放端口</span></span><br><span class="line">echo -e &quot;</span><br><span class="line">config rule</span><br><span class="line">          option name &#x27;ALLOW_PORT_OUT&#x27;</span><br><span class="line">          option dest &#x27;wan&#x27;</span><br><span class="line">          option target &#x27;ACCEPT&#x27;</span><br><span class="line"></span><br><span class="line">config rule</span><br><span class="line">          option name &#x27;ALLOW_PORT_IN&#x27;</span><br><span class="line">          option src &#x27;wan&#x27;</span><br><span class="line">          option target &#x27;ACCEPT&#x27;&quot; &gt;&gt; firewall_port</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">端口转发</span></span><br><span class="line">echo -e &quot;</span><br><span class="line">config redirect</span><br><span class="line">        option dest &#x27;lan&#x27;</span><br><span class="line">        option target &#x27;DNAT&#x27;</span><br><span class="line">        option name &#x27;alist&#x27;</span><br><span class="line">        option src &#x27;wan&#x27;</span><br><span class="line">        option src_dport &#x27;5678&#x27;</span><br><span class="line">        option dest_ip &#x27;$lan_ip_address&#x27;</span><br><span class="line">        option dest_port &#x27;5678&#x27;&quot; &gt;&gt; firewall_port_Forwards</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">ddns</span></span><br><span class="line">echo -e &quot;</span><br><span class="line">config service &#x27;ddns&#x27;</span><br><span class="line">        option service_name &#x27;google.com&#x27;</span><br><span class="line">        option use_ipv6 &#x27;0&#x27;</span><br><span class="line">        option enabled &#x27;1&#x27;</span><br><span class="line">        option lookup_host &#x27;$ddns_host&#x27;</span><br><span class="line">        option domain &#x27;$ddns_host&#x27;</span><br><span class="line">        option username &#x27;$ddns_username&#x27;</span><br><span class="line">        option password &#x27;$ddns_password&#x27;</span><br><span class="line">        option ip_source &#x27;interface&#x27;</span><br><span class="line">        option interface &#x27;pppoe-wan&#x27;</span><br><span class="line">        option use_syslog &#x27;2&#x27;</span><br><span class="line">        option check_unit &#x27;minutes&#x27;</span><br><span class="line">        option force_unit &#x27;minutes&#x27;</span><br><span class="line">        option retry_unit &#x27;seconds&#x27;</span><br><span class="line">        option ip_interface &#x27;pppoe-wan&#x27;&quot; &gt;&gt; d_dns</span><br><span class="line"></span><br><span class="line">funAc88u()&#123;</span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">主机名</span></span><br><span class="line">  if [ -n &quot;$host_name&quot; ]; then</span><br><span class="line">    uci set system.@system[0].hostname=&quot;$host_name&quot;</span><br><span class="line">    uci commit system</span><br><span class="line">    /etc/init.d/system reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">时区</span></span><br><span class="line">  if [ -n &quot;$zone_name&quot; ]; then</span><br><span class="line">    uci set system.@system[0].zonename=&quot;$zone_name&quot;</span><br><span class="line">    uci set system.@system[0].timezone=&#x27;UTC-8&#x27;</span><br><span class="line">    uci commit system</span><br><span class="line">    /etc/init.d/system reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">root密码</span></span><br><span class="line">  if [ -n &quot;$root_password&quot; ]; then</span><br><span class="line">    (echo &quot;$root_password&quot;; sleep 1; echo &quot;$root_password&quot;) | passwd &gt; /dev/null</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">WLAN</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">More options: https://openwrt.org/docs/guide-user/network/wifi/basic<span class="comment">#wi-fi_interfaces</span></span></span><br><span class="line">  if [ -n &quot;$wlan_name&quot; -a -n &quot;$wlan_password&quot; -a $&#123;#wlan_password&#125; -ge 8 ]; then</span><br><span class="line">    uci set wireless.radio0.channel=&#x27;11&#x27;</span><br><span class="line">    uci set wireless.radio0.band=&#x27;2g&#x27;</span><br><span class="line">    uci set wireless.radio0.htmode=&#x27;HT40&#x27;</span><br><span class="line">    uci set wireless.default_radio0.device=&#x27;radio0&#x27;</span><br><span class="line">    uci set wireless.default_radio0.network=&#x27;lan&#x27;</span><br><span class="line">    uci set wireless.default_radio0.mode=&#x27;ap&#x27;</span><br><span class="line">    uci set wireless.default_radio0.ssid=&quot;$wlan_name&quot;</span><br><span class="line">    uci set wireless.default_radio0.encryption=&#x27;psk2&#x27;</span><br><span class="line">    uci set wireless.default_radio0.key=&quot;$wlan_password&quot;</span><br><span class="line"></span><br><span class="line">    uci set wireless.radio1.channel=&#x27;48&#x27;</span><br><span class="line">    uci set wireless.radio1.band=&#x27;5g&#x27;</span><br><span class="line">    uci set wireless.radio1.htmode=&#x27;VHT80&#x27;</span><br><span class="line">    uci set wireless.default_radio1.device=&#x27;radio1&#x27;</span><br><span class="line">    uci set wireless.default_radio1.network=&#x27;lan&#x27;</span><br><span class="line">    uci set wireless.default_radio1.mode=&#x27;ap&#x27;</span><br><span class="line">    uci set wireless.default_radio1.ssid=&quot;$wlan_name_5G&quot;</span><br><span class="line">    uci set wireless.default_radio1.encryption=&#x27;psk2&#x27;</span><br><span class="line">    uci set wireless.default_radio1.key=&quot;$wlan_password_5G&quot;</span><br><span class="line"></span><br><span class="line">    uci delete wireless.radio0.disabled=&#x27;1&#x27;</span><br><span class="line">    uci delete wireless.radio1.disabled=&#x27;1&#x27;</span><br><span class="line"></span><br><span class="line">    uci commit wireless</span><br><span class="line">    /etc/init.d/wireless reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">终端自动登录</span></span><br><span class="line">  if [ -n &quot;$ttyd_login&quot; ]; then</span><br><span class="line">    uci set ttyd.@ttyd[0].command=&quot;$ttyd_login&quot;</span><br><span class="line">    uci commit ttyd</span><br><span class="line">    /etc/init.d/ttyd reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">ddns</span></span><br><span class="line">  if [ -n &quot;$ddns_host&quot; ]; then</span><br><span class="line">    cat d_dns &gt;&gt; /etc/config/ddns</span><br><span class="line">    uci commit ddns</span><br><span class="line">    /etc/init.d/ddns reload</span><br><span class="line">    rm d_dns</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">开放端口(选择 <span class="built_in">test</span> 用)</span></span><br><span class="line">  if [ -f firewall_port ]; then</span><br><span class="line">    cat firewall_port &gt;&gt; /etc/config/firewall</span><br><span class="line">    uci commit firewall</span><br><span class="line">    /etc/init.d/firewall reload</span><br><span class="line">    rm firewall_port</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">端口转发</span></span><br><span class="line">  if [ -f firewall_port_Forwards ]; then</span><br><span class="line">    cat firewall_port_Forwards &gt;&gt; /etc/config/firewall</span><br><span class="line">    rm firewall_port_Forwards</span><br><span class="line">    uci commit firewall</span><br><span class="line">    /etc/init.d/firewall reload</span><br><span class="line">  fi</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  if [ -n &quot;$clash_rules&quot; ]; then</span><br><span class="line">    #openclash</span><br><span class="line">    #uci set openclash.config.enable=&#x27;1&#x27;</span><br><span class="line">    uci set openclash.config.dashboard_password=&#x27;OpenClash8517&#x27;</span><br><span class="line">    uci set openclash.@authentication[0].password=&#x27;OpenClash8517&#x27;</span><br><span class="line">    uci commit openclash</span><br><span class="line">    /etc/init.d/openclash reload</span><br><span class="line"></span><br><span class="line">    uci add openclash config_subscribe</span><br><span class="line">    uci set openclash.@config_subscribe[-1]=config_subscribe</span><br><span class="line">    uci set openclash.@config_subscribe[-1].enabled=&#x27;1&#x27;</span><br><span class="line">    uci set openclash.@config_subscribe[-1].name=&#x27;clash-rules&#x27;</span><br><span class="line">    uci set openclash.@config_subscribe[-1].address=&quot;$clash_rules&quot;</span><br><span class="line">    uci set openclash.@config_subscribe[-1].sub_ua=&#x27;Clash&#x27;</span><br><span class="line">    uci set openclash.@config_subscribe[-1].sub_convert=&#x27;0&#x27;</span><br><span class="line">    uci commit openclash</span><br><span class="line">    /etc/init.d/openclash reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">LAN 静态协议</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">More options: https://openwrt.org/docs/guide-user/base-system/basic-networking</span></span><br><span class="line">  if [ -n &quot;$lan_ip_address&quot; ]; then</span><br><span class="line">    uci set network.lan.proto=&#x27;static&#x27;</span><br><span class="line">    uci set network.lan.ipaddr=&quot;$lan_ip_address&quot;</span><br><span class="line">    uci set network.lan.netmask=&quot;$lan_netmask&quot;</span><br><span class="line">    uci commit network</span><br><span class="line">    /etc/init.d/network reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">LAN 其它协议</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">More options: https://openwrt.org/docs/guide-user/base-system/basic-networking</span></span><br><span class="line">  if [ -n &quot;$lan_proto&quot; ]; then</span><br><span class="line">    uci set network.lan.proto=&quot;$lan_proto&quot;</span><br><span class="line">    uci commit network</span><br><span class="line">    /etc/init.d/network reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">Wan pppoe 协议</span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">More options: https://openwrt.org/docs/guide-user/network/wan/wan_interface_protocols<span class="comment">#protocol_pppoe_ppp_over_ethernet</span></span></span><br><span class="line">  if [ -n &quot;$pppoe_username&quot; -a &quot;$pppoe_password&quot; ]; then</span><br><span class="line">    uci set network.wan.proto=pppoe</span><br><span class="line">    uci set network.wan.username=&quot;$pppoe_username&quot;</span><br><span class="line">    uci set network.wan.password=&quot;$pppoe_password&quot;</span><br><span class="line">    uci delete network.wan6</span><br><span class="line">    uci commit network</span><br><span class="line">    /etc/init.d/network reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">WAN 其它协议</span></span><br><span class="line">  if [ -n &quot;$wan_proto&quot; ]; then</span><br><span class="line">    uci set network.wan.proto=&quot;$wan_proto&quot;</span><br><span class="line">    uci commit network</span><br><span class="line">    /etc/init.d/network reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">文件共享</span></span><br><span class="line">  uuid=$(blkid -s UUID -o value /dev/sd*)</span><br><span class="line">  device1=$(blkid -U $uuid)</span><br><span class="line">  device2=$(echo $(blkid -U $uuid) | sed &#x27;s/dev/mnt/&#x27;)</span><br><span class="line"></span><br><span class="line">  case $mnt_disk in</span><br><span class="line">    &quot;1&quot;)</span><br><span class="line">      dockerd_dir=&quot;$device2/opt/docker&quot;</span><br><span class="line">      ksmbd_dir=&quot;/mnt&quot;</span><br><span class="line">      ;;</span><br><span class="line">    &quot;2&quot;)</span><br><span class="line">      dockerd_dir=&quot;/opt/docker&quot;</span><br><span class="line">      ksmbd_dir=&quot;/opt&quot;</span><br><span class="line">      re_boot=1</span><br><span class="line">      ;;</span><br><span class="line">    *)</span><br><span class="line">      ksmbd_dir=&#x27;/etc&#x27;</span><br><span class="line">  esac</span><br><span class="line"></span><br><span class="line">  if [ -n &quot;$k_smbd&quot; ]; then</span><br><span class="line">    uci set ksmbd.@globals[0].interface=&#x27;lan wan&#x27;</span><br><span class="line">    uci add ksmbd share</span><br><span class="line">    uci set ksmbd.@share[-1]=share</span><br><span class="line">    uci set ksmbd.@share[-1].name=&#x27;ac88u&#x27;</span><br><span class="line">    uci set ksmbd.@share[-1].path=&quot;$ksmbd_dir&quot;</span><br><span class="line">    uci set ksmbd.@share[-1].force_root=&#x27;1&#x27;</span><br><span class="line">    uci set ksmbd.@share[-1].read_only=&#x27;no&#x27;</span><br><span class="line">    uci set ksmbd.@share[-1].guest_ok=&#x27;yes&#x27;</span><br><span class="line">    uci set ksmbd.@share[-1].create_mask=&#x27;0666&#x27;</span><br><span class="line">    uci set ksmbd.@share[-1].dir_mask=&#x27;0777&#x27;</span><br><span class="line">    uci commit ksmbd</span><br><span class="line">    /etc/init.d/ksmbd reload</span><br><span class="line">  fi</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  # </span><span class="language-bash">dockerd 根目录</span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">匹配替换整行</span></span><br><span class="line">  sed -i &quot;/data_root/c\	option data_root \&#x27;$dockerd_dir\&#x27;&quot; /etc/config/dockerd</span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">sed -i <span class="string">&#x27;s/opt\/docker/$dockerd_dir/&#x27;</span> /etc/config/dockerd</span></span><br><span class="line">  uci commit dockerd</span><br><span class="line">  /etc/init.d/dockerd reload</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">  #</span><span class="language-bash">磁盘挂载</span></span><br><span class="line">  case $mnt_disk in</span><br><span class="line">    &quot;1&quot;)</span><br><span class="line">      #mount /dev/sda1 /mnt/sda1</span><br><span class="line">      #rm -rf /mnt/sda1/lost+found /mnt/sda1/upper /mnt/sda1/work</span><br><span class="line">      #mkfs.ext4 /dev/sda1</span><br><span class="line">      uci add fstab mount</span><br><span class="line">      uci set fstab.@mount[-1]=mount</span><br><span class="line">      uci set fstab.@mount[-1].target=&quot;$device2&quot;</span><br><span class="line">      uci set fstab.@mount[-1].uuid=&quot;$uuid&quot;</span><br><span class="line">      uci set fstab.@mount[-1].enabled=&#x27;1&#x27;</span><br><span class="line">      uci commit fstab</span><br><span class="line">      /etc/init.d/fstab reload</span><br><span class="line">      ;;</span><br><span class="line">    &quot;2&quot;)</span><br><span class="line">      mkdir -p /tmp/introot</span><br><span class="line">      mkdir -p /tmp/extroot</span><br><span class="line">      mount --bind / /tmp/introot</span><br><span class="line">      mount &quot;$device1&quot; /tmp/extroot</span><br><span class="line">      tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -</span><br><span class="line">      wait</span><br><span class="line">      umount /tmp/introot</span><br><span class="line">      umount /tmp/extroot</span><br><span class="line"></span><br><span class="line">      uci add fstab mount</span><br><span class="line">      uci set fstab.@mount[-1]=mount</span><br><span class="line">      uci set fstab.@mount[-1].target=&quot;/&quot;</span><br><span class="line">      uci set fstab.@mount[-1].uuid=&quot;$uuid&quot;</span><br><span class="line">      uci set fstab.@mount[-1].enabled=&#x27;1&#x27;</span><br><span class="line">      uci commit fstab</span><br><span class="line">      /etc/init.d/fstab reload</span><br><span class="line">  esac</span><br><span class="line"></span><br><span class="line">  if [ -n &quot;$re_boot&quot; ]; then</span><br><span class="line">    reboot</span><br><span class="line">  fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">main() &#123;</span><br><span class="line">  funAc88u</span><br><span class="line">&#125;</span><br><span class="line">main &quot;$@&quot;</span><br><span class="line"></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+
+<h4 id="主机名，时区"><a href="#主机名，时区" class="headerlink" title="主机名，时区"></a>主机名，时区</h4><h4 id="密码"><a href="#密码" class="headerlink" title="密码"></a>密码</h4><h4 id="wan-拨号-pppoe-协议"><a href="#wan-拨号-pppoe-协议" class="headerlink" title="wan 拨号 pppoe 协议"></a>wan 拨号 pppoe 协议</h4><h4 id="openclash-订阅地址"><a href="#openclash-订阅地址" class="headerlink" title="openclash 订阅地址"></a>openclash 订阅地址</h4><h4 id="ddns"><a href="#ddns" class="headerlink" title="ddns"></a>ddns</h4><h4 id="wifi-名称及密码"><a href="#wifi-名称及密码" class="headerlink" title="wifi 名称及密码"></a>wifi 名称及密码</h4><h4 id="lan-静态协议地址-lan-其它协议"><a href="#lan-静态协议地址-lan-其它协议" class="headerlink" title="lan 静态协议地址&#x2F;lan 其它协议"></a>lan 静态协议地址&#x2F;lan 其它协议</h4><h4 id="wan-其它协议"><a href="#wan-其它协议" class="headerlink" title="wan 其它协议"></a>wan 其它协议</h4><h4 id="终端自动登录"><a href="#终端自动登录" class="headerlink" title="终端自动登录"></a>终端自动登录</h4><h4 id="文件共享"><a href="#文件共享" class="headerlink" title="文件共享"></a>文件共享</h4><h4 id="磁盘挂载-1：-mnt-2："><a href="#磁盘挂载-1：-mnt-2：" class="headerlink" title="磁盘挂载 1：&#x2F;mnt 2：&#x2F;"></a>磁盘挂载 1：&#x2F;mnt 2：&#x2F;</h4><p>其它不在赘述，我在<a href="https://tl8517.com/openwrt-online-diy/">OpenWrt在线编译（官方网址）及自定义（openclash，设备名，密码等等）</a>文章中已经摘出来了，可以参考下，大部分都相同。</p>
+<p>openclash 订阅地址的自定义，因为没有安装 ipk 文件，所以不会成功。但是在磁盘挂载中选择为挂载为根目录，就会生效，不只生效还会在添加相同的一项。其它还会重复添加的还有共享目录等。首次可以启用，往后编译可以将这几项注释掉。</p>
+<p>在执行挂载为根目录时，会将分区中的文件复制一份到 u盘，其它文件还会存在。u盘中之前已安装 openclash ，刷好固件后 openclash 还存在，免去了重新安装。我感觉很方便。</p>
+<p>挂载为根目录，收传输速度影响，时间很长，耐心等待吧。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">磁盘挂载 1：/mnt 2：/</span></span><br><span class="line">mnt_disk=&quot;2&quot;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">文件共享</span></span><br><span class="line">uuid=$(blkid -s UUID -o value /dev/sd*)</span><br><span class="line">device1=$(blkid -U $uuid)</span><br><span class="line">device2=$(echo $(blkid -U $uuid) | sed &#x27;s/dev/mnt/&#x27;)</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">磁盘挂载</span></span><br><span class="line">case $mnt_disk in</span><br><span class="line">  &quot;1&quot;)</span><br><span class="line">    #mount /dev/sda1 /mnt/sda1</span><br><span class="line">    #rm -rf /mnt/sda1/lost+found /mnt/sda1/upper /mnt/sda1/work</span><br><span class="line">    #mkfs.ext4 /dev/sda1</span><br><span class="line">    uci add fstab mount</span><br><span class="line">    uci set fstab.@mount[-1]=mount</span><br><span class="line">    uci set fstab.@mount[-1].target=&quot;$device2&quot;</span><br><span class="line">    uci set fstab.@mount[-1].uuid=&quot;$uuid&quot;</span><br><span class="line">    uci set fstab.@mount[-1].enabled=&#x27;1&#x27;</span><br><span class="line">    uci commit fstab</span><br><span class="line">    /etc/init.d/fstab reload</span><br><span class="line">    ;;</span><br><span class="line">  &quot;2&quot;)</span><br><span class="line">    mkdir -p /tmp/introot</span><br><span class="line">    mkdir -p /tmp/extroot</span><br><span class="line">    mount --bind / /tmp/introot</span><br><span class="line">    mount &quot;$device1&quot; /tmp/extroot</span><br><span class="line">    tar -C /tmp/introot -cvf - . | tar -C /tmp/extroot -xf -</span><br><span class="line">    wait</span><br><span class="line">    umount /tmp/introot</span><br><span class="line">    umount /tmp/extroot</span><br><span class="line"></span><br><span class="line">    uci add fstab mount</span><br><span class="line">    uci set fstab.@mount[-1]=mount</span><br><span class="line">    uci set fstab.@mount[-1].target=&quot;/&quot;</span><br><span class="line">    uci set fstab.@mount[-1].uuid=&quot;$uuid&quot;</span><br><span class="line">    uci set fstab.@mount[-1].enabled=&#x27;1&#x27;</span><br><span class="line">    uci commit fstab</span><br><span class="line">    /etc/init.d/fstab reload</span><br><span class="line">esac</span><br><span class="line"></span><br><span class="line">if [ -n &quot;$re_boot&quot; ]; then</span><br><span class="line">  reboot</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h3 id="刷机完成后"><a href="#刷机完成后" class="headerlink" title="刷机完成后"></a>刷机完成后</h3><p><img src="/../assets/openwrt-ac88u/153458.webp" alt="状态页面"></p>
+<h2 id="视频或文章链接"><a href="#视频或文章链接" class="headerlink" title="视频或文章链接"></a>视频或文章链接</h2><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1TJ4m1w7dR/?vd_source=b459f8bec4abb31d38ec4d8492220318">bili 视频 OpenWrt在线编译（官方网址）及自定义</a></p>
+<p><a href="https://tl8517.com/openwrt-cmcc-cr8818/">路由器cmcc-cr8808（8818）取消运营商限制，开启 telnet，ssh</a></p>
+<p><a href="https://tl8517.com/clash-local-subscription-conversion/">openclash 自定义的本地节点转换（subconverter）</a></p>
+<p><a href="https://tl8517.com/openwrt-online-diy/">OpenWrt在线编译（官方网址）及自定义（openclash，设备名，密码等等）</a></p>
+<p><a href="https://tl8517.com/openwrt-rax3000m/">RAX3000M 修改配置文件，刷 u-boot 及 openwrt 固件</a></p>
+<p><a href="https://tl8517.com/openwrt-default-config/">openwrt 默认配置编译（密码 语言 IP））</a></p>
+<p>自用的节点商，对于非常高清的视频没有需求可以试试，关键便宜，一个月十几块。<br><a target="_blank" rel="noopener" href="https://shandianpro.com/#/register?code=XeRqKeJ0">闪电</a></p>
+<h2 id="文件下载"><a href="#文件下载" class="headerlink" title="文件下载"></a>文件下载</h2><p><a href="https://tl8517.com/">暂无</a></p>
+<h2 id="Q群：290979342（聚焦单车交流群）"><a href="#Q群：290979342（聚焦单车交流群）" class="headerlink" title="Q群：290979342（聚焦单车交流群）"></a>Q群：290979342（聚焦单车交流群）</h2><h2 id="Q群：977922094（聚焦-openwrt-路由器交流）"><a href="#Q群：977922094（聚焦-openwrt-路由器交流）" class="headerlink" title="Q群：977922094（聚焦 openwrt 路由器交流）"></a>Q群：977922094（聚焦 openwrt 路由器交流）</h2>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>请我一杯咖啡吧！</div>
+  <button>
+    赞赏
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/Img/pay/wechatpay.webp" alt="csjtl 微信">
+        <span>微信</span>
+      </div>
+      <div>
+        <img src="/Img/pay/alipay.webp" alt="csjtl 支付宝">
+        <span>支付宝</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>原作者： </strong>聚焦单车
+  </li>
+  <li class="post-copyright-link">
+      <strong>本文链接：</strong>
+      <a href="https://tl8517.com/openwrt-ac88u/" title="openwrt-ac88u">https://tl8517.com/openwrt-ac88u/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-ND</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E8%81%9A%E7%84%A6%E5%8D%95%E8%BD%A6%E5%B7%A5%E4%BD%9C%E5%AE%A4/" rel="tag"># 聚焦单车工作室</a>
+              <a href="/tags/3d%E5%BB%BA%E6%A8%A1/" rel="tag"># 3d建模</a>
+              <a href="/tags/3d%E6%89%93%E5%8D%B0/" rel="tag"># 3d打印</a>
+              <a href="/tags/openwrt/" rel="tag"># openwrt</a>
+              <a href="/tags/%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%AF%91/" rel="tag"># 在线编译</a>
+              <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/" rel="tag"># 路由器</a>
+              <a href="/tags/ac88u/" rel="tag"># ac88u</a>
+              <a href="/tags/%E5%8E%9F%E7%89%88%E5%9B%BA%E4%BB%B6/" rel="tag"># 原版固件</a>
+              <a href="/tags/asus/" rel="tag"># asus</a>
+              <a href="/tags/%E5%8D%8E%E7%A1%95/" rel="tag"># 华硕</a>
+              <a href="/tags/%E8%81%9A%E7%84%A6%E8%B7%AF%E7%94%B1-openwrt/" rel="tag"># 聚焦路由 openwrt</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/openwrt-cmcc-cr8818/" rel="prev" title="路由器cmcc-cr8808（8818）取消运营商限制，开启 telnet，ssh">
+                  <i class="fa fa-angle-left"></i> 路由器cmcc-cr8808（8818）取消运营商限制，开启 telnet，ssh
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fas fa-heart-broken"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">csjtl</span>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="/lib/animejs/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="/lib/hexo-generator-searchdb/dist/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  <script async src="/js/cursor/fireworks.js"></script>
+
+</body>
+</html>
